@@ -6,8 +6,10 @@
     "defaults"
   ],
   "dependencies": {
+    "@redwoodjs/auth": "^0.15.3",
     "@redwoodjs/router": "^0.15.3",
     "@redwoodjs/web": "^0.15.3",
+    "netlify-identity-widget": "^1.9.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
