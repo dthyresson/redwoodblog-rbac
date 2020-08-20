@@ -1,5 +1,6 @@
 import { useMutation, useFlash } from '@redwoodjs/web'
 import { Link, routes, navigate } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 
 const DELETE_POST_MUTATION = gql`
   mutation DeletePostMutation($id: Int!) {
@@ -44,6 +45,8 @@ const Post = ({ post }) => {
     }
   }
 
+  const { hasRole } = useAuth()
+
   return (
     <>
       <div className="rw-segment">
@@ -74,19 +77,24 @@ const Post = ({ post }) => {
         </table>
       </div>
       <nav className="rw-button-group">
-        <Link
-          to={routes.editPost({ id: post.id })}
-          className="rw-button rw-button-blue"
-        >
-          Edit
-        </Link>
-        <a
-          href="#"
-          className="rw-button rw-button-red"
-          onClick={() => onDeleteClick(post.id)}
-        >
-          Delete
-        </a>
+        {hasRole('editor') && (
+          <Link
+            to={routes.editPost({ id: post.id })}
+            className="rw-button rw-button-blue"
+          >
+            Edit
+          </Link>
+        )}
+        {hasRole('admin') ||
+          (hasRole('publisher') && (
+            <a
+              href="#"
+              className="rw-button rw-button-red"
+              onClick={() => onDeleteClick(post.id)}
+            >
+              Delete
+            </a>
+          ))}
       </nav>
     </>
   )

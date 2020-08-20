@@ -1,13 +1,17 @@
-import BlogPost from 'src/components/BlogPost'
+import BlogPostSummary from 'src/components/BlogPostSummary'
 
 export const QUERY = gql`
   query {
     posts {
-      id
-      title
-      body
-      createdAt
+      ...postFields
     }
+  }
+
+  fragment postFields on Post {
+    id
+    title
+    body
+    createdAt
   }
 `
 
@@ -18,5 +22,7 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ posts }) => {
-  return posts.map((post) => <BlogPost key={post.id} post={post} />)
+  return posts.map((post) => (
+    <BlogPostSummary key={post.id} post={post} concise={true} />
+  ))
 }

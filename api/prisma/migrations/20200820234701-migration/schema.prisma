@@ -1,5 +1,5 @@
 datasource DS {
-  provider = "sqlite"
+  provider = ["postgresql", "sqlite"]
   url = "***"
 }
 
@@ -13,4 +13,12 @@ model Post {
   createdAt DateTime @default(now())
   title     String
   body      String
+}
+
+model Contact {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  name      String
+  email     String
+  message   String
 }

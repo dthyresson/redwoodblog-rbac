@@ -1,4 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
 
 import Posts from 'src/components/Posts'
 
@@ -16,12 +17,19 @@ export const QUERY = gql`
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => {
+  const { hasRole } = useAuth()
+
   return (
-    <div className="rw-text-center">
-      {'No posts yet. '}
-      <Link to={routes.newPost()} className="rw-link">
-        {'Create one?'}
-      </Link>
+    <div>
+      <div className="rw-text-center">{'No posts yet. '}</div>
+      {hasRole('author') ||
+        (hasRole('publisher') && (
+          <div className="rw-text-center">
+            <Link to={routes.newPost()} className="rw-link">
+              {'Create one?'}
+            </Link>
+          </div>
+        ))}
     </div>
   )
 }
