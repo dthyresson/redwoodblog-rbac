@@ -2,7 +2,7 @@ import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
 
 export const posts = () => {
-  return db.post.findMany()
+  return db.post.findMany({ orderBy: { title: 'asc' } })
 }
 
 export const post = ({ id }) => {

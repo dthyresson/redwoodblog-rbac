@@ -74,7 +74,7 @@ const SettingsPage = () => {
                             <div className="ml-4 flex-shrink-0">
                               {hasRole('admin') && (
                                 <a
-                                  href={`${process.env.URL}/identity/${userMetadata.id}`}
+                                  href={`https://app.netlify.com/sites/${process.env.SITE_NAME}/identity/${userMetadata.id}`}
                                   className="font-medium text-orange-600 hover:text-orange-500 transition duration-150 ease-in-out"
                                   target="_blank"
                                   rel="noreferrer"
