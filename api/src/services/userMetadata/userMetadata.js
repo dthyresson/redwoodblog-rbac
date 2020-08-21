@@ -10,7 +10,7 @@ export const updateUserMetadata = async ({ input }) => {
   requireAuth()
 
   const { body } = await got.put(
-    'https://redwoodblog-with-identity.netlify.app/.netlify/identity/user',
+    'https://${process.env.SITE_NAME}.netlify.app/.netlify/identity/user',
     {
       responseType: 'json',
 

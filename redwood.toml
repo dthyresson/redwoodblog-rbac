@@ -13,5 +13,6 @@
   includeEnvironmentVariables = ['SITE_NAME', 'URL', 'GOTRUE_JWT_EXP']
 [api]
   port = 8911
+  includeEnvironmentVariables = ['SITE_NAME', 'URL']
 [browser]
   open = true
