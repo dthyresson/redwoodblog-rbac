@@ -4,6 +4,10 @@ export const QUERY = gql`
   query UserQuery {
     user {
       id
+      email
+      user_metadata {
+        full_name
+      }
     }
   }
 `
