@@ -89,7 +89,7 @@ const PostsList = ({ posts }) => {
                       Edit
                     </Link>
                   )}
-                  {hasRole('publisher') && (
+                  {(hasRole('admin') || hasRole('publisher')) && (
                     <a
                       href="#"
                       title={'Delete post ' + post.id}

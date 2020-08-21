@@ -11,10 +11,26 @@ async function main() {
   // will result in the same database state (usually by checking for the
   // existence of a record before trying to create it). For example:
   //
-  //   const existing = await db.user.findMany({ where: { email: 'admin@email.com' }})
-  //   if (!existing.length) {
-  //     await db.user.create({ data: { name: 'Admin', email: 'admin@email.com' }})
-  //   }
+  // Note: these lyric snippets are copyrighted by their authors.
+  const existing = await db.post.findMany()
+
+  if (!existing.length) {
+    await db.post.create({
+      data: {
+        title: 'Feed the Tree',
+        body:
+          "This old man I've talked aboutBroke his own heart,\nPoured it in the ground\nBig red tree grew up and out,\nThrows up its leaves,\nSpins round and round.",
+      },
+    })
+
+    await db.post.create({
+      data: {
+        title: 'Lime Tree Arbour',
+        body:
+          'The wind in the trees is whispering\nWhispering low that I love her\nShe puts her hand over mine\nDown in the lime tree arbour',
+      },
+    })
+  }
 
   console.info('No data to seed. See api/prisma/seeds.js for info.')
 }
@@ -22,5 +38,5 @@ async function main() {
 main()
   .catch((e) => console.error(e))
   .finally(async () => {
-    await db.disconnect()
+    await db.$disconnect()
   })

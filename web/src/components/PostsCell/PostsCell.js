@@ -22,14 +22,13 @@ export const Empty = () => {
   return (
     <div>
       <div className="rw-text-center">{'No posts yet. '}</div>
-      {hasRole('author') ||
-        (hasRole('publisher') && (
-          <div className="rw-text-center">
-            <Link to={routes.newPost()} className="rw-link">
-              {'Create one?'}
-            </Link>
-          </div>
-        ))}
+      {(hasRole('admin') || hasRole('author') || hasRole('publisher')) && (
+        <div className="rw-text-center">
+          <Link to={routes.newPost()} className="rw-link">
+            {'Create one?'}
+          </Link>
+        </div>
+      )}
     </div>
   )
 }

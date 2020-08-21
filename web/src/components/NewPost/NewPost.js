@@ -1,5 +1,7 @@
 import { useMutation, useFlash } from '@redwoodjs/web'
 import { navigate, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
+
 import PostForm from 'src/components/PostForm'
 
 const CREATE_POST_MUTATION = gql`
@@ -11,6 +13,8 @@ const CREATE_POST_MUTATION = gql`
 `
 
 const NewPost = () => {
+  const { hasRole } = useAuth()
+
   const { addMessage } = useFlash()
   const [createPost, { loading, error }] = useMutation(CREATE_POST_MUTATION, {
     onCompleted: () => {
@@ -24,14 +28,16 @@ const NewPost = () => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">New Post</h2>
-      </header>
-      <div className="rw-segment-main">
-        <PostForm onSave={onSave} loading={loading} error={error} />
+    (hasRole('admin') || hasRole('author') || hasRole('publisher')) && (
+      <div className="rw-segment">
+        <header className="rw-segment-header">
+          <h2 className="rw-heading rw-heading-secondary">New Post</h2>
+        </header>
+        <div className="rw-segment-main">
+          <PostForm onSave={onSave} loading={loading} error={error} />
+        </div>
       </div>
-    </div>
+    )
   )
 }
 

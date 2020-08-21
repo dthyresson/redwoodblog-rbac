@@ -4,6 +4,14 @@ import StackedLayout from 'src/layouts/StackedLayout'
 const SettingsPage = () => {
   const { isAuthenticated, currentUser, userMetadata, hasRole } = useAuth()
 
+  const obfuscate = (email) => {
+    const [username, rest] = email.split('@')
+    const obfuscatedUsername = `${username[0]}***${
+      username[username.length - 1]
+    }`
+    return [obfuscatedUsername, rest].join('@')
+  }
+
   return (
     <StackedLayout>
       {isAuthenticated && (
@@ -32,7 +40,7 @@ const SettingsPage = () => {
                     Email address
                   </dt>
                   <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
-                    {userMetadata.email}
+                    {obfuscate(userMetadata.email)}
                   </dd>
                 </div>
                 <div className="mt-8 sm:mt-0 sm:grid sm:grid-cols-3 sm:gap-4 sm:border-t sm:border-gray-200 sm:px-6 sm:py-5">
@@ -66,7 +74,7 @@ const SettingsPage = () => {
                             <div className="ml-4 flex-shrink-0">
                               {hasRole('admin') && (
                                 <a
-                                  href={`https://app.netlify.com/sites/redwoodblog-with-identity/identity/${userMetadata.id}`}
+                                  href={`${process.env.URL}/identity/${userMetadata.id}`}
                                   className="font-medium text-orange-600 hover:text-orange-500 transition duration-150 ease-in-out"
                                   target="_blank"
                                   rel="noreferrer"

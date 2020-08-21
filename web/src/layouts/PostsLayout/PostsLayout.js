@@ -17,12 +17,11 @@ const PostsLayout = (props) => {
               Posts
             </Link>
           </h1>
-          {hasRole('admin') ||
-            (hasRole('author') && (
-              <Link to={routes.newPost()} className="rw-button rw-button-green">
-                <div className="rw-button-icon">+</div> New Post
-              </Link>
-            ))}
+          {(hasRole('admin') || hasRole('author')) && (
+            <Link to={routes.newPost()} className="rw-button rw-button-green">
+              <div className="rw-button-icon">+</div> New Post
+            </Link>
+          )}
         </header>
         <main className="rw-main">{props.children}</main>
       </div>

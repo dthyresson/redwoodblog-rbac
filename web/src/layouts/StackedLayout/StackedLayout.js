@@ -1,6 +1,5 @@
 import { NavLink, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
-import { useLocation } from '@redwoodjs/router'
 
 import logo from './redwood_logotype.png'
 
@@ -48,7 +47,8 @@ const StackedLayout = ({ children }) => {
                   Contact
                 </NavLink>
                 {isAuthenticated &&
-                  (hasRole('author') ||
+                  (hasRole('admin') ||
+                    hasRole('author') ||
                     hasRole('editor') ||
                     hasRole('publisher')) && (
                     <NavLink

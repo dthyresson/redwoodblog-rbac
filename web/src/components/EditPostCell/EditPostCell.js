@@ -1,5 +1,7 @@
 import { useMutation, useFlash } from '@redwoodjs/web'
 import { navigate, routes } from '@redwoodjs/router'
+import { useAuth } from '@redwoodjs/auth'
+
 import PostForm from 'src/components/PostForm'
 
 export const QUERY = gql`
@@ -23,6 +25,7 @@ const UPDATE_POST_MUTATION = gql`
 export const Loading = () => <div>Loading...</div>
 
 export const Success = ({ post }) => {
+  const { hasRole } = useAuth()
   const { addMessage } = useFlash()
   const [updatePost, { loading, error }] = useMutation(UPDATE_POST_MUTATION, {
     onCompleted: () => {
@@ -36,13 +39,25 @@ export const Success = ({ post }) => {
   }
 
   return (
-    <div className="rw-segment">
-      <header className="rw-segment-header">
-        <h2 className="rw-heading rw-heading-secondary">Edit Post {post.id}</h2>
-      </header>
-      <div className="rw-segment-main">
-        <PostForm post={post} onSave={onSave} error={error} loading={loading} />
+    (hasRole('admin') ||
+      hasRole('author') ||
+      hasRole('editor') ||
+      hasRole('publisher')) && (
+      <div className="rw-segment">
+        <header className="rw-segment-header">
+          <h2 className="rw-heading rw-heading-secondary">
+            Edit Post {post.id}
+          </h2>
+        </header>
+        <div className="rw-segment-main">
+          <PostForm
+            post={post}
+            onSave={onSave}
+            error={error}
+            loading={loading}
+          />
+        </div>
       </div>
-    </div>
+    )
   )
 }

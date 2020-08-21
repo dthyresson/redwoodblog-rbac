@@ -1,5 +1,6 @@
 import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
+import moment from 'moment'
 
 const BlogPostSummary = ({ post, concise = false }) => {
   const { hasRole } = useAuth()
@@ -7,8 +8,10 @@ const BlogPostSummary = ({ post, concise = false }) => {
   return (
     <div className="bg-white">
       <p className="text-sm leading-5 text-gray-500">
-        <time dateTime="{new Date(post.createdAt).toUTCString()}">
-          {new Date(post.createdAt).toUTCString()}
+        <time
+          dateTime={moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm a')}
+        >
+          {moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm a')}
         </time>
       </p>
       <a href="#" className="block">
@@ -16,7 +19,7 @@ const BlogPostSummary = ({ post, concise = false }) => {
           {post.title}
         </h3>
         <p className="mt-3 text-base leading-6 text-gray-500">
-          {concise ? `${post.body.slice(0, 20)} ...` : post.body}
+          {concise ? `${post.body.slice(0, 200)} ...` : post.body}
         </p>
       </a>
       <div className="mt-3">
@@ -26,7 +29,7 @@ const BlogPostSummary = ({ post, concise = false }) => {
         >
           Read full story
         </Link>
-        {hasRole('editor') && (
+        {(hasRole('admin') || hasRole('editor')) && (
           <Link
             to={routes.editPost({ id: post.id })}
             className="text-base leading-6 font-semibold text-red-600 hover:text-red-500 transition ease-in-out duration-150"
