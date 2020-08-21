@@ -19,5 +19,5 @@ export const users = async () => {
   )
   console.log(body)
 
-  return [{ id: 'afdna' }]
+  return [{ id: 'one' }, { id: 'two' }, { id: 'three' }]
 }
