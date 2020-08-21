@@ -2,7 +2,7 @@ import got from 'got'
 import { requireAuth } from 'src/lib/auth'
 
 export const users = async () => {
-  requireAuth()
+  requireAuth({ role: 'admin' })
 
   const adminToken = context.clientContext.identity.token
 
@@ -15,7 +15,6 @@ export const users = async () => {
       },
     }
   )
-  console.log(body['users'])
 
   return body['users']
 }
