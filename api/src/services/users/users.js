@@ -10,7 +10,7 @@ export const users = async () => {
   console.log(process.env.SITE_NAME)
 
   const { body } = await got.put(
-    'https://redwoodblog-with-identity.netlify.app/.netlify/identity/users',
+    'https://redwoodblog-with-identity.netlify.app/.netlify/identity/admin/users',
     {
       responseType: 'json',
       headers: {
