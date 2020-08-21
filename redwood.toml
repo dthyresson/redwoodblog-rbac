@@ -10,6 +10,7 @@
 [web]
   port = 8910
   apiProxyPath = "/.netlify/functions"
+  includeEnvironmentVariables = ['SITE_NAME', 'URL', 'GOTRUE_JWT_EXP']
 [api]
   port = 8911
 [browser]
