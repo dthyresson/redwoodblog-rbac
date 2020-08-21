@@ -7,6 +7,9 @@ export const QUERY = gql`
       user_metadata {
         full_name
       }
+      app_metadata {
+        roles
+      }
     }
   }
 `
