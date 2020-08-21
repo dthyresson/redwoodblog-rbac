@@ -8,8 +8,6 @@ const UsersPage = () => {
   return (
     <StackedLayout>
       {isAuthenticated && hasRole('admin') && <UsersCell />}
-
-      {isAuthenticated && hasRole('admin') && <UsersCell />}
     </StackedLayout>
   )
 }
