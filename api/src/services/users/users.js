@@ -6,9 +6,6 @@ export const users = async () => {
 
   const adminToken = context.clientContext.identity.token
 
-  console.log(adminToken)
-  console.log(process.env.SITE_NAME)
-
   const { body } = await got.get(
     'https://redwoodblog-with-identity.netlify.app/.netlify/identity/admin/users',
     {
@@ -18,7 +15,7 @@ export const users = async () => {
       },
     }
   )
-  console.log(body)
+  console.log(body['users'])
 
-  return [{ id: 'one' }, { id: 'two' }, { id: 'three' }]
+  return body['users']
 }
