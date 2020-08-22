@@ -28,11 +28,7 @@ const User = ({ user }) => {
             {obfuscate(user.email)}
           </p>
         </div>
-        <img
-          className="w-10 h-10 bg-gray-300 rounded-full flex-shrink-0"
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
-          alt=""
-        />
+        <div className="rounded-full bg-gray-400 w-10 h-10 flex-shrink-0"></div>
       </div>
       <div className="border-t border-gray-200">
         <div className="-mt-px flex">
