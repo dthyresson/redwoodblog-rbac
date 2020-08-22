@@ -2,22 +2,22 @@
 
 [Welcome to Redwood!](https://redwoodjs.com/tutorial/welcome-to-redwood)
 
-The [RedwoodJS tutorial](https://redwoodjs.com/tutorial/prerequisites) creates a basic blog engine. It [deploys](https://redwoodjs.com/tutorial/deployment) to [Netlify](https://www.netlify.com/), uses a PostgreSQL database hosted by [Heroku](https://www.heroku.com/), and introduces [Authentication] with [Netlify Identity](https://docs.netlify.com/visitor-access/identity/).
+The [RedwoodJS tutorial](https://redwoodjs.com/tutorial/prerequisites) creates a basic blog engine. It [deploys](https://redwoodjs.com/tutorial/deployment) to [Netlify](https://www.netlify.com/), uses a PostgreSQL database hosted by [Heroku](https://www.heroku.com/), and introduces [Authentication](https://redwoodjs.com/docs/authentication) with [Netlify Identity](https://docs.netlify.com/visitor-access/identity/).
 
-This app is a modifed-version of that blog engine tutorial with some added tweaks:
+This `redwoodblog` app is a modifed-version of the RedwoodJS blog engine tutorial with some added tweaks:
 
 * TailwindCSS and UI
 * User Profile / Settings
-* Role-based Access Control (RBAC)
-* User Management via Netlify Identity API
+* Role-based Access Control (RBAC) on Posts
+* User Management via Netlify Identity API (view users)
 * Contact messages get associated with user, if logged in
 * Posts have an optional author and publisher set by currentUser
 
-Note: This app does not store any User information, but rather integrates with Netlify Identity.
+Note: This app does not store any User information in a database, but rather integrates with Netlify Identity.
 
 ### Roles
 
-There are several defined roles:
+There redwoodblog defines the following roles:
 
 * Admin
 * Author
@@ -26,9 +26,93 @@ There are several defined roles:
 
 Depending on the user's role(s), their access to Posts will differ.
 
-Everyone (even those not authenticated) can view posts.
+As in the current tutorial, everyone (even those not authenticated) can view posts and submit Contact messages.
 
 ### Access Control
+
+In some blogs, certain individuals might author and certain people may edit (but not author).
+
+Publishers might be able to author, edit and delete.
+
+Admins could do everything -- as well as access user info (but authors, editors, and publisher cannot).
+
+Users can be assigned roles. Given the role, their access to data and perform tasks can be controlled.
+
+It is important when applying role-based access control (RBAC) that it be applied both in the `web` and `api` sides.
+
+On the `web` side, you will control access on:
+
+* Private Routes
+
+```
+<Private unauthenticated="home" role="admin">
+  <Route path="/admin/users" page={UsersPage} name="users" />
+</Private>
+```
+
+Note: in future release, Private Routes will be able to accept a list of roles.
+
+
+* Within a page, cell, or component using `hasRole()`
+
+```
+{(hasRole('admin') || hasRole('author')) && (
+  <Link to={routes.newPost()} className="rw-button rw-button-green">
+    <div className="rw-button-icon">+</div> New Post
+  </Link>
+)}
+```
+
+On the `api` side:
+
+* In a `service` via `requireAuth()`
+
+```js
+import { requireAuth } from 'src/lib/auth'
+
+...
+
+const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
+
+export const createPost = ({ input }) => {
+  requireAuth({ roles: CREATE_POST_ROLES })
+
+  return db.post.create({
+    data: {
+      ...input,
+      authorId: context.currentUser.sub,
+      publisherId: context.currentUser.sub,
+    },
+  })
+}
+
+```
+
+Note: This app has a modified `requireAuth()` that accepts multiple roles:
+
+```js
+export const requireAuth = ({ roles } = {}) => {
+  if (!context.currentUser) {
+    throw new AuthenticationError("You don't have permission to do that.")
+  }
+
+  if (
+    typeof roles !== 'undefined' &&
+    typeof roles === 'string' &&
+    !context.currentUser.roles?.includes(roles)
+  ) {
+    throw new ForbiddenError("You don't have access to do that.")
+  }
+
+  if (
+    typeof roles !== 'undefined' &&
+    Array.isArray(roles) &&
+    !context.currentUser.roles?.some((role) => roles.includes(role))
+  ) {
+    throw new ForbiddenError("You don't have access to do that.")
+  }
+}
+```
 
 #### Posts
 

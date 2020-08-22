@@ -108,8 +108,9 @@ export const getCurrentUser = async (decoded) => {
  * whether or not they are assigned a role, and optionally raise an
  * error if they're not.
  *
- * @param {string=} role - An optional role
- *
+ * @param {string=} roles - An optional role or list of roles
+ * @param {array=} roles - An optional list of roles
+
  * @example
  *
  * // checks if currentUser is authenticated
@@ -117,9 +118,9 @@ export const getCurrentUser = async (decoded) => {
  *
  * @example
  *
- * // checks if currentUser is authenticated and assigned a role
- * requireAuth({ role: 'admin' })
- *
+ * // checks if currentUser is authenticated and assigned one of thw given roles
+ * requireAuth({ roles: 'admin' })
+ * requireAuth({ roles: 'admin' })
  */
 export const requireAuth = ({ roles } = {}) => {
   if (!context.currentUser) {
