@@ -87,7 +87,7 @@ const Post = ({ post }) => {
         </table>
       </div>
       <nav className="rw-button-group">
-        {hasRole('editor') && (
+        {(hasRole('admin') || hasRole('editor') || hasRole('publisher')) && (
           <Link
             to={routes.editPost({ id: post.id })}
             className="rw-button rw-button-blue"

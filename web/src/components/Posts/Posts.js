@@ -64,8 +64,6 @@ const PostsList = ({ posts }) => {
             <th>Title</th>
             <th>Body</th>
             <th>Created at</th>
-            <th>Published at</th>
-            <th>Updated at</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -76,8 +74,6 @@ const PostsList = ({ posts }) => {
               <td>{truncate(post.title)}</td>
               <td>{truncate(post.body)}</td>
               <td>{timeTag(post.createdAt)}</td>
-              <td>{timeTag(post.publishedAt)}</td>
-              <td>{timeTag(post.updatedAt)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link
@@ -85,7 +81,7 @@ const PostsList = ({ posts }) => {
                     title={'Show post ' + post.id + ' detail'}
                     className="rw-button rw-button-small"
                   >
-                    Show
+                    View
                   </Link>
                   {hasRole('editor') && (
                     <Link
