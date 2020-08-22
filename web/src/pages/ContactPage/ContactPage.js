@@ -1,3 +1,5 @@
+import { useAuth } from '@redwoodjs/auth'
+
 import {
   Form,
   TextField,
@@ -7,7 +9,7 @@ import {
   Label,
   FormError,
 } from '@redwoodjs/forms'
-import { useMutation } from '@redwoodjs/web'
+import { Flash, useMutation, useFlash } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
 import StackedLayout from 'src/layouts/StackedLayout'
 
@@ -20,23 +22,28 @@ const CREATE_CONTACT = gql`
 `
 
 const ContactPage = () => {
+  const { isAuthenticated } = useAuth()
+  const { addMessage } = useFlash()
   const formMethods = useForm()
 
   const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
     onCompleted: () => {
-      alert('Thank you for your submission!')
+      addMessage('Thank you for your submission!', {
+        classes: 'rw-flash-success',
+      })
+
       formMethods.reset()
     },
   })
 
   const onSubmit = (data) => {
     create({ variables: { input: data } })
-    console.log(data)
   }
 
   return (
     <StackedLayout>
-      <div className="bg-white overflow-hidden shadow rounded-lg">
+      <Flash timeout={1000} />
+      <div className="bg-white overflow-hidden shadow rounded-lg mt-8">
         <div className="px-4 py-5 sm:p-6">
           <Form
             onSubmit={onSubmit}
@@ -66,28 +73,30 @@ const ContactPage = () => {
                 <FieldError name="name" className="error" />
               </div>
             </div>
-            <div>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <Label
-                  name="name"
-                  className="block text-sm font-medium leading-5 text-gray-700"
-                  errorClassName="error"
-                >
-                  Email
-                </Label>
-                <TextField
-                  className="form-input block w-full sm:text-sm sm:leading-5"
-                  placeholder="you@example.com"
-                  name="email"
-                  id="email"
-                  validation={{
-                    required: true,
-                  }}
-                  errorClassName="error"
-                />
-                <FieldError name="email" className="error" />
+            {!isAuthenticated && (
+              <div>
+                <div className="mt-1 relative rounded-md shadow-sm">
+                  <Label
+                    name="name"
+                    className="block text-sm font-medium leading-5 text-gray-700"
+                    errorClassName="error"
+                  >
+                    Email
+                  </Label>
+                  <TextField
+                    className="form-input block w-full sm:text-sm sm:leading-5"
+                    placeholder="you@example.com"
+                    name="email"
+                    id="email"
+                    validation={{
+                      required: true,
+                    }}
+                    errorClassName="error"
+                  />
+                  <FieldError name="email" className="error" />
+                </div>
               </div>
-            </div>
+            )}
             <div>
               <div className="mt-1 relative rounded-md shadow-sm">
                 <Label

@@ -5,6 +5,7 @@ export const schema = gql`
     name: String!
     email: String!
     message: String!
+    userId: String
   }
 
   type Query {
@@ -13,7 +14,7 @@ export const schema = gql`
 
   input CreateContactInput {
     name: String!
-    email: String!
+    email: String
     message: String!
   }
 

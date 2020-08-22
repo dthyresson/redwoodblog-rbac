@@ -18,5 +18,20 @@ export const contacts = () => {
 
 export const createContact = ({ input }) => {
   validate(input)
-  return db.contact.create({ data: input })
+
+  console.log({
+    data: {
+      ...input,
+      userId: context.currentUser?.sub,
+      email: context.currentUser?.email || input.email,
+    },
+  })
+
+  return db.contact.create({
+    data: {
+      ...input,
+      userId: context.currentUser?.sub,
+      email: context.currentUser?.email || input.email,
+    },
+  })
 }

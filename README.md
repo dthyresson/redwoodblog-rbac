@@ -51,6 +51,7 @@ Everyone (even those not authenticated) can view posts.
 
 There is no RBAC when creating a Contact message.
 
+However, if the user is logged in, the Contact is assigned a `userId` and the `email` is pulled from their `currentUser` information. The Contact form does not require `email` if authenticated.
 
 ### Users
 
@@ -67,6 +68,7 @@ There is no RBAC when creating a Contact message.
 ## Netlify Identity Setup
 
 
+## New Environment Variables
 
 # About Redwood
 >**HEADS UP:** RedwoodJS is _NOT_ ready for use in Production. It relies heavily on Prisma2, which is currently in testing with an expected production release coming soon. See status at ["Is Prisma2 Ready?"](https://isprisma2ready.com)
