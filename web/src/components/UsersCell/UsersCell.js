@@ -16,7 +16,7 @@ export const QUERY = gql`
 
 export const Loading = () => {
   const user = {
-    id: '',
+    id: `${Date.now()}`,
     email: 'example@example.com',
     app_metadata: { roles: [] },
     user_metadata: { full_name: '' },
@@ -29,7 +29,7 @@ export const Loading = () => {
             key={`${user.id}-item`}
             className="animate-pulse col-span-1 bg-white rounded-lg shadow"
           >
-            <User key={user.id} user={user} />
+            <User key={`${user.id}-${Math.random()}`} user={user} />
           </li>
         </ul>
       </div>
@@ -46,7 +46,7 @@ export const Success = ({ users }) => {
     <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {users.map((user) => (
         <li
-          key={`${user.id}-item`}
+          key={`${user.id}-item-${Math.random()}`}
           className="col-span-1 bg-white rounded-lg shadow"
         >
           <User key={user.id} user={user} />
