@@ -22,18 +22,16 @@ export const Loading = () => {
     user_metadata: { full_name: '' },
   }
   return (
-    <div className="bg-white overflow-hidden shadow rounded-lg">
-      <div className="px-4 py-5 sm:p-6">
-        <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <li
-            key={`${user.id}-item`}
-            className="animate-pulse col-span-1 bg-white rounded-lg shadow"
-          >
-            <User key={`${user.id}-${Math.random()}`} user={user} />
-          </li>
-        </ul>
-      </div>
-    </div>
+    <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {[user, user, user].map((user) => (
+        <li
+          key={`${user.id}-item-${Math.random()}`}
+          className="animate-pulse col-span-1 bg-white rounded-lg shadow"
+        >
+          <User key={`${user.id}-${Math.random()}`} user={user} />
+        </li>
+      ))}
+    </ul>
   )
 }
 
