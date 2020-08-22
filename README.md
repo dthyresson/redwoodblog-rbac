@@ -4,7 +4,7 @@
 
 The [RedwoodJS tutorial](https://redwoodjs.com/tutorial/prerequisites) creates a basic blog engine. It [deploys](https://redwoodjs.com/tutorial/deployment) to [Netlify](https://www.netlify.com/), uses a PostgreSQL database hosted by [Heroku](https://www.heroku.com/), and introduces [Authentication](https://redwoodjs.com/docs/authentication) with [Netlify Identity](https://docs.netlify.com/visitor-access/identity/).
 
-This `redwoodblog` app is a modifed-version of the RedwoodJS blog engine tutorial with some added tweaks:
+This `redwoodblog` app is a modified-version of the RedwoodJS blog engine tutorial with some added tweaks:
 
 * TailwindCSS and UI
 * User Profile / Settings
