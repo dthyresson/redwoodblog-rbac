@@ -1,4 +1,12 @@
 const User = ({ user }) => {
+  const obfuscate = (email) => {
+    const [username, rest] = email.split('@')
+    const obfuscatedUsername = `${username[0]}***${
+      username[username.length - 1]
+    }`
+    return [obfuscatedUsername, rest].join('@')
+  }
+
   return (
     <>
       <div className="w-full flex items-center justify-between p-6 space-x-6">
@@ -17,7 +25,7 @@ const User = ({ user }) => {
             ))}
           </div>
           <p className="mt-1 text-gray-500 text-sm leading-5 truncate">
-            {user.email}
+            {obfuscate(user.email)}
           </p>
         </div>
         <img
@@ -69,7 +77,7 @@ const User = ({ user }) => {
                 />
               </svg>
 
-              <span className="ml-3">Edit</span>
+              <span className="ml-3">Manage</span>
             </a>
           </div>
         </div>
