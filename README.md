@@ -11,7 +11,7 @@ This app is a modifed-version of that blog engine tutorial with some added tweak
 * Role-based Access Control (RBAC)
 * User Management via Netlify Identity API
 * Contact messages get associated with user, if logged in
-* Posts have an optional author
+* Posts have an optional author and publisher set by currentUser
 
 Note: This app does not store any User information, but rather integrates with Netlify Identity.
 
@@ -65,10 +65,127 @@ However, if the user is logged in, the Contact is assigned a `userId` and the `e
 | Publisher  |   |   |   |   |
 ---
 
+# User Profile
+
+The user's profile is entirely stored in the decoded access token.
+
+By default, Netlify's JWT contains the following profile:
+
+* sub - the User's id
+* email
+* full_name - in user_metadata
+* roles - in app_metadata
+
+```
+{
+  "exp": 1598058245,
+  "sub": "ba931ab3-8cfd-32ba-c9c2-e51df1d860d",
+  "email": "user@example.com",
+  "app_metadata": {
+    "provider": "email",
+    "roles": [
+      "admin",
+      "author",
+      "editor"
+    ]
+  },
+  "user_metadata": {
+    "full_name": "Example User"
+  }
+}
+```
+
+To get a list of users, Netlify provides a mechanism to get a short-lived token from a function's context.
+
+One can use this token to call admi method of the GoTrue apil such as `/admin/users`/ to fet aq list of all Identity users.
+
+While there is no `User` model or table, the `api/src/graphql/users.sdl.js` and `api/src/graphql/userMetadata.sdl.js` define the `User` types.
+
+```js
+  type UserMetadata {
+    full_name: String!
+  }
+
+  type AppMetadata {
+    roles: [String]
+  }
+
+  type User {
+    id: String!
+    aud: String
+    role: String
+    email: String!
+    confirmed_at: DateTime
+    confirmation_sent_at: DateTime
+    recovery_sent_at: DateTime
+    app_metadata: AppMetadata
+    user_metadata: UserMetadata
+    created_at: DateTime!
+    updated_at: DateTime!
+  }
+
+  type Query {
+    userMetadata: UserMetadata!
+    users: [User!]!
+```
+
+One can they query users from a service such as `users` by getting the short-lived `adminToken` from the `context.clientContext.identity`. With that you can call [GoTrue admin methods](https://github.com/netlify/gotrue-js#admin-methods).
+
+```js
+import got from 'got'
+import { requireAuth } from 'src/lib/auth'
+
+export const users = async () => {
+  requireAuth({ role: 'admin' })
+
+  const adminToken = context.clientContext?.identity?.token
+
+  const { body } = await got.get(
+    'https://<YOUR_SITE>.netlify.app/.netlify/identity/admin/users',
+    {
+      responseType: 'json',
+      headers: {
+        authorization: `Bearer ${adminToken}`,
+      },
+    }
+  )
+
+  return body['users']
+}
+```
+
 ## Netlify Identity Setup
 
+You will need to [Enable Identity](https://docs.netlify.com/visitor-access/identity/#enable-identity-in-the-ui).
+
+To enable Identity service on your site, select the Identity tab and click Enable Identity.
+
+This will create an Identity service instance for your site, and allow you to invite Identity users and change settings.
+
+### Manage Users and Roles
+You can [access settings](https://docs.netlify.com/visitor-access/identity/manage-existing-users/) for an individual Identity user by clicking their entry in the list on the site's Identity tab.
+
+After inviting users and they confirm, you can [add roles to their profile](https://docs.netlify.com/visitor-access/identity/manage-existing-users/#user-account-metadata).
+
+Roles are not Identity user editable. You can assign one or more roles of your choosing, then use them to control access to areas or functionality in your site by checking this property: `"app_metadata": {"roles": ["admin"]}`.
 
 ## New Environment Variables
+
+GOTRUE_JWT_EXP
+SITE_NAME
+
+```
+// redwood.toml
+[web]
+  port = 8910
+  apiProxyPath = "/.netlify/functions"
+  includeEnvironmentVariables = ['SITE_NAME', 'GOTRUE_JWT_EXP']
+[api]
+  port = 8911
+  includeEnvironmentVariables = ['SITE_NAME']
+```
+
+---
 
 # About Redwood
 >**HEADS UP:** RedwoodJS is _NOT_ ready for use in Production. It relies heavily on Prisma2, which is currently in testing with an expected production release coming soon. See status at ["Is Prisma2 Ready?"](https://isprisma2ready.com)
