@@ -42,6 +42,9 @@ const PostsList = ({ posts }) => {
     onCompleted: () => {
       addMessage('Post deleted.', { classes: 'rw-flash-success' })
     },
+    onError: () => {
+      addMessage('Post cannot be deleted.', { classes: 'rw-flash-error' })
+    },
   })
 
   const onDeleteClick = (id) => {
@@ -61,6 +64,8 @@ const PostsList = ({ posts }) => {
             <th>Title</th>
             <th>Body</th>
             <th>Created at</th>
+            <th>Published at</th>
+            <th>Updated at</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -71,6 +76,8 @@ const PostsList = ({ posts }) => {
               <td>{truncate(post.title)}</td>
               <td>{truncate(post.body)}</td>
               <td>{timeTag(post.createdAt)}</td>
+              <td>{timeTag(post.publishedAt)}</td>
+              <td>{timeTag(post.updatedAt)}</td>
               <td>
                 <nav className="rw-table-actions">
                   <Link

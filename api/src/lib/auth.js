@@ -121,14 +121,23 @@ export const getCurrentUser = async (decoded) => {
  * requireAuth({ role: 'admin' })
  *
  */
-export const requireAuth = ({ role } = {}) => {
+export const requireAuth = ({ roles } = {}) => {
   if (!context.currentUser) {
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
   if (
-    typeof role !== 'undefined' &&
-    !context.currentUser.roles?.includes(role)
+    typeof roles !== 'undefined' &&
+    typeof roles === 'string' &&
+    !context.currentUser.roles?.includes(roles)
+  ) {
+    throw new ForbiddenError("You don't have access to do that.")
+  }
+
+  if (
+    typeof roles !== 'undefined' &&
+    Array.isArray(roles) &&
+    !context.currentUser.roles?.some((role) => roles.includes(role))
   ) {
     throw new ForbiddenError("You don't have access to do that.")
   }

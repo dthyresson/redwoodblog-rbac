@@ -1,6 +1,10 @@
 import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
 
+const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
+const UPDATE_POST_ROLES = ['admin', 'editor']
+const DELETE_POST_ROLES = ['admin', 'publisher']
+
 export const posts = () => {
   return db.post.findMany({ orderBy: { title: 'asc' } })
 }
@@ -12,24 +16,33 @@ export const post = ({ id }) => {
 }
 
 export const createPost = ({ input }) => {
-  requireAuth()
+  requireAuth({ roles: CREATE_POST_ROLES })
 
   return db.post.create({
-    data: input,
+    data: {
+      ...input,
+      authorId: context.currentUser.sub,
+      publisherId: context.currentUser.sub,
+    },
   })
 }
 
 export const updatePost = ({ id, input }) => {
-  requireAuth()
+  requireAuth({ roles: UPDATE_POST_ROLES })
 
   return db.post.update({
-    data: input,
+    data: {
+      ...input,
+      editorId: context.currentUser.sub,
+      publisherId: context.currentUser.sub,
+      updatedAt: new Date(),
+    },
     where: { id },
   })
 }
 
 export const deletePost = ({ id }) => {
-  requireAuth()
+  requireAuth({ roles: DELETE_POST_ROLES })
 
   return db.post.delete({
     where: { id },

@@ -1,4 +1,74 @@
-# Redwood
+# Redwood Tutorial-Blog with Netlify Identity and RBAC
+
+[Welcome to Redwood!](https://redwoodjs.com/tutorial/welcome-to-redwood)
+
+The [RedwoodJS tutorial](https://redwoodjs.com/tutorial/prerequisites) creates a basic blog engine. It [deploys](https://redwoodjs.com/tutorial/deployment) to [Netlify](https://www.netlify.com/), uses a PostgreSQL database hosted by [Heroku](https://www.heroku.com/), and introduces [Authentication] with [Netlify Identity](https://docs.netlify.com/visitor-access/identity/).
+
+This app is a modifed-version of that blog engine tutorial with some added tweaks:
+
+* TailwindCSS and UI
+* User Profile / Settings
+* Role-based Access Control (RBAC)
+* User Management via Netlify Identity API
+* Contact messages get associated with user, if logged in
+* Posts have an optional author
+
+Note: This app does not store any User information, but rather integrates with Netlify Identity.
+
+### Roles
+
+There are several defined roles:
+
+* Admin
+* Author
+* Editor
+* Publisher
+
+Depending on the user's role(s), their access to Posts will differ.
+
+Everyone (even those not authenticated) can view posts.
+
+### Access Control
+
+#### Posts
+
+* **Admins** can create, update, and delete posts.
+
+* **Authors** can create and update posts.
+
+* **Editors** can update posts.
+
+* **Publishers** can create, update, and delete Posts.
+
+| Role  |  Create | Update   | Delete   | View   |
+|---|---|---|---|---|
+| Admin  | X  | X  | X  | X  |
+| Author   | X  |   |   | X  |
+| Editor  |   | X  |   | X  |
+| Publisher  | X  | X  | X  | X  |
+
+### Contacts
+
+There is no RBAC when creating a Contact message.
+
+
+### Users
+
+* **Admins** can access User Management.
+
+| Role  |  Create | Update   | Delete   | View   |
+|---|---|---|---|---|
+| Admin  |  |  |  | X  |
+| Author   |   |   |   |   |
+| Editor  |   |   |   |   |
+| Publisher  |   |   |   |   |
+---
+
+## Netlify Identity Setup
+
+
+
+# About Redwood
 >**HEADS UP:** RedwoodJS is _NOT_ ready for use in Production. It relies heavily on Prisma2, which is currently in testing with an expected production release coming soon. See status at ["Is Prisma2 Ready?"](https://isprisma2ready.com)
 
 ## Getting Started

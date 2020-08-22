@@ -32,6 +32,9 @@ export const Success = ({ post }) => {
       navigate(routes.posts())
       addMessage('Post updated.', { classes: 'rw-flash-success' })
     },
+    onError: () => {
+      addMessage('Post cannot be edited.', { classes: 'rw-flash-error' })
+    },
   })
 
   const onSave = (input, id) => {

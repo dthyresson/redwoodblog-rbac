@@ -8,6 +8,8 @@ export const QUERY = gql`
     posts {
       id
       createdAt
+      updatedAt
+      publishedAt
       title
       body
     }

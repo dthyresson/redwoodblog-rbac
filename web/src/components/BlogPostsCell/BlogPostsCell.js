@@ -17,14 +17,19 @@ export const QUERY = gql`
 
 export const Loading = () => {
   return (
-    <div className="bg-white overflow-hidden shadow rounded-lg">
-      <div className="px-4 py-5 sm:p-6">Loading</div>
+    <div className="bg-white overflow-hidden">
+      <div className="px-4 py-5 sm:p-6">Loading ...</div>
     </div>
   )
 }
 
-export const Empty = () => <div>Empty</div>
-
+export const Empty = () => {
+  return (
+    <div className="bg-white overflow-hidden">
+      <div className="px-4 py-5 sm:p-6 ">No news is good news</div>
+    </div>
+  )
+}
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ posts }) => {

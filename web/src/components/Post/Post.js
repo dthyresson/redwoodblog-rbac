@@ -20,9 +20,11 @@ const jsonDisplay = (obj) => {
 
 const timeTag = (datetime) => {
   return (
-    <time dateTime={datetime} title={datetime}>
-      {new Date(datetime).toUTCString()}
-    </time>
+    typeof datetime !== 'undefined' && (
+      <time dateTime={datetime} title={datetime}>
+        {new Date(datetime).toUTCString()}
+      </time>
+    )
   )
 }
 
@@ -64,6 +66,14 @@ const Post = ({ post }) => {
             <tr>
               <th>Created at</th>
               <td>{timeTag(post.createdAt)}</td>
+            </tr>
+            <tr>
+              <th>Published at</th>
+              <td>{timeTag(post.publishedAt)}</td>
+            </tr>
+            <tr>
+              <th>Updated at</th>
+              <td>{timeTag(post.updatedAt)}</td>
             </tr>
             <tr>
               <th>Title</th>
