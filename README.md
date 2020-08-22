@@ -255,8 +255,10 @@ Roles are not Identity user editable. You can assign one or more roles of your c
 
 ## New Environment Variables
 
-GOTRUE_JWT_EXP
-SITE_NAME
+```
+GOTRUE_JWT_EXP - You can increase the expiration time of your JWT
+SITE_NAME - Used to link to your Netlify Identity management page for your site
+```
 
 ```
 // redwood.toml
