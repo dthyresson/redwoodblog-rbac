@@ -13,6 +13,6 @@
   includeEnvironmentVariables = ['SITE_NAME', 'GOTRUE_JWT_EXP']
 [api]
   port = 8911
-  includeEnvironmentVariables = ['SITE_NAME']
+  includeEnvironmentVariables = ['SITE_NAME', 'NETLIFY_IDENTITY_REGISTRATION_WEBHOOK_SECRET']
 [browser]
   open = true
