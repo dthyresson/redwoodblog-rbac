@@ -12,6 +12,8 @@ This `redwoodblog` app is a modified-version of the RedwoodJS blog engine tutori
 * User Management via Netlify Identity API (view users)
 * Contact messages get associated with user, if logged in
 * Posts have an optional author and publisher set by currentUser
+* Uses Netlify Identity [Trigger Serverless function calls](https://docs.netlify.com/functions/functions-and-identity/#trigger-serverless-functions-on-identity-events) to assign roles when signing up
+* Lists users (admin only) via Netlify Identity API
 
 Note: This app does not store any User information in a database, but rather integrates with Netlify Identity.
 
