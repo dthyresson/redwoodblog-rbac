@@ -298,9 +298,9 @@ On signup, we will automatically assign you roles based on your email via the "T
 
 If your email contains:
 
-* `+author` as in `example+author-example@gmail.com`, yu will be assigned the `author` role
-* `+editor` as in `example+editor-example@gmail.com`, yu will be assigned the `editor` role
-* `+publisher` as in `example+publisher-example@gmail.com`, yu will be assigned the `publisher` role
+* `+author` as in `example+author-example@gmail.com`, you will be assigned the `author` role
+* `+editor` as in `example+editor-example@gmail.com`, you will be assigned the `editor` role
+* `+publisher` as in `example+publisher-example@gmail.com`, you will be assigned the `publisher` role
 
 See: `functions/identity-signup.js` function for implemenation details.
 
