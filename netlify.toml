@@ -1,5 +1,5 @@
 [build]
-  command = "yarn rw build && yarn rw db up --no-db-client --auto-approve && yarn rw dataMigrate up & yarn rw db seed --no-db-client --auto-approve"
+  command = "yarn rw build && yarn rw db up --no-db-client --auto-approve && yarn rw db seed && yarn rw dataMigrate up"
   publish = "web/dist"
   functions = "api/dist/functions"
 
