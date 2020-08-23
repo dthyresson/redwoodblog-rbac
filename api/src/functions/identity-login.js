@@ -1,11 +1,11 @@
-export const handler = async (event, context) => {
-  console.log(event)
-  console.log(event.body)
-  console.log(context)
+export const handler = async (event, _context) => {
+  const eventType = event.body.event
+  const user = event.body.user
 
-  // const adminToken = context.clientContext.identity.token
-  // console.log(adminToken)
-  console.log('identity-login')
+  if (eventType === 'login') {
+    console.log(`User: ${user.id} logged in`)
+  }
+
   return {
     statusCode: 200,
   }

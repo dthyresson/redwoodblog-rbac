@@ -1,12 +1,31 @@
-export const handler = async (event, context) => {
-  console.log(event)
-  console.log(event.body)
-  console.log(context)
+export const handler = async (event, _context) => {
+  const eventType = event.body.event
+  const user = event.body.user
+  const email = user.email
 
-  // const adminToken = context.clientContext.identity.token
-  // console.log(adminToken)
-  console.log('identity-signup')
-  return {
-    statusCode: 200,
+  let roles = []
+
+  if (eventType === 'signup') {
+    if (email.includes('+author')) {
+      roles.push('author')
+    }
+
+    if (email.includes('+editor')) {
+      roles.push('editor')
+    }
+
+    if (email.includes('+publisher')) {
+      roles.push('publisher')
+    }
+
+    console.log(`User: ${user.email} signed-up and given roles: ${roles}`)
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ app_metadata: { roles: roles } }),
+    }
+  } else {
+    return {
+      statusCode: 200,
+    }
   }
 }

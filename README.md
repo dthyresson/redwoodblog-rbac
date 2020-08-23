@@ -284,6 +284,10 @@ If your serverless function returns a 200, you can also return a JSON object wit
 
 The value of the Identity user's app metadata will be replaced with the above.
 
+Note: To prevent external requests to event functions, Netlify generates a JSON web signature (JWS) for each event triggered by our platform, and verifies that the signature is correct before invoking an associated event function.
+
+That means you cannot just call the function externally -- you will get a 403 Forbidden status..
+
 ## New Environment Variables
 
 ```
