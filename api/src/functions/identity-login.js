@@ -6,7 +6,6 @@ export const handler = async (req, _context) => {
 
   console.log(eventType)
 
-  const eventType = req.body.event
   const user = req.body.user
 
   if (eventType === 'login') {
