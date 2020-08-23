@@ -17,6 +17,8 @@ Note: This app does not store any User information in a database, but rather int
 
 You can access a demo at [https://redwoodblog-with-identity.netlify.app/](https://redwoodblog-with-identity.netlify.app/).
 
+
+
 ### Roles
 
 There redwoodblog defines the following roles:
