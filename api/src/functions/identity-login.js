@@ -1,12 +1,11 @@
 export const handler = async (req, _context) => {
-  console.log(req)
-  console.log(req.body)
+  const body = JSON.parse(req.body)
 
-  const eventType = req.body.event
+  const eventType = body.event
 
   console.log(eventType)
 
-  const user = req.body.user
+  const user = body.user
 
   if (eventType === 'login') {
     console.log(`User: ${user.id} logged in`)
