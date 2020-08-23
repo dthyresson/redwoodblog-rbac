@@ -14,6 +14,8 @@ async function main() {
   // Note: these lyric snippets are copyrighted by their authors.
 
   if (process.env.INCOMING_HOOK_URL === process.env.INCOMING_RESEED_HOOK_URL) {
+    console.log(`Building via Build Hook ${process.env.INCOMING_HOOK_URL}`)
+
     const deleted = await db.post.deleteMany({
       where: {},
     })
@@ -73,9 +75,9 @@ async function main() {
           "I am a tree - I show my age when I don't cry \\ I have the leaves that will fall off when wind blows by \\ Don't strip off my bark - I have been stripped of it before \\ Yesterday's gone and tomorrow has so much more in store \\ You are a bird - you're taking off in every way \\ Say the last word until there is nothing more to say \\ Don't interrupt - you know the squirrels are my friends \\ Get off my limb - for I will break before I bend \\ I'm planning to see \\ I'm planning to feel you all over me \\ So climb up my trunk and build on your nest \\ Come and get the sap out if me \\ I am a tree! \\ Fruitless and free! \\ No symmetry! \\ Touch me and…",
       },
     })
+  } else {
+    console.info('Existing data. Not overwriting seeds.')
   }
-
-  console.info('No data to seed. See api/prisma/seeds.js for info.')
 }
 
 main()

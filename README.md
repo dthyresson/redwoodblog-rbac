@@ -324,6 +324,12 @@ SITE_NAME - Used to link to your Netlify Identity management page for your site
   includeEnvironmentVariables = ['SITE_NAME']
 ```
 
+## Reseed Data via Repeater.dev
+
+Note that the demo app schedules a re-seed of the data dail via [Repeater.dev](https://www.repeater.dev) and a [Netlify Build Hook](https://docs.netlify.com/configure-builds/build-hooks).
+
+Any user-added posts will be removed.
+
 ---
 
 # About Redwood
