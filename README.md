@@ -253,6 +253,37 @@ After inviting users and they confirm, you can [add roles to their profile](http
 
 Roles are not Identity user editable. You can assign one or more roles of your choosing, then use them to control access to areas or functionality in your site by checking this property: `"app_metadata": {"roles": ["admin"]}`.
 
+### Trigger serverless functions on Identity events
+
+You can [trigger serverless function calls](https://docs.netlify.com/functions/functions-and-identity/#trigger-serverless-functions-on-identity-events) when certain Identity events happen, like when a user signs up. The following events are currently available:
+
+* `identity-validate`: Triggered when an Identity user tries to sign up via Identity.
+* `identity-signup`: Triggered when an Identity user signs up via Netlify Identity. (Note: this fires for only email+password signups, not for signups via external providers e.g. Google/GitHub)
+* `identity-login`: Triggered when an Identity user logs in via Netlify Identity
+
+To set a serverless function to trigger on one of these events, match the name of the function file to the name of the event. For example, to trigger a serverless function on identity-login events, name the function file `identity-login.js`.
+
+If you return a status other than 200 or 204 from one of these event functions, the signup or login will be blocked.
+
+The payload in the body of an Identity event function looks like:
+
+```js
+{
+  "event": "login|signup|validate",
+  "user": {
+    # an Identity user object
+  }
+}
+```
+
+If your serverless function returns a 200, you can also return a JSON object with new user_metadata or app_metadata for the Identity user. For example, if you return:
+
+```js
+{"app_metadata": {"roles": ["admin"]}}
+```
+
+The value of the Identity user's app metadata will be replaced with the above.
+
 ## New Environment Variables
 
 ```
