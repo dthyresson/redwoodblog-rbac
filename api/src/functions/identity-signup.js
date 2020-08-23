@@ -1,6 +1,10 @@
-export const handler = async (event, _context) => {
-  const eventType = event.body.event
-  const user = event.body.user
+export const handler = async (req, _context) => {
+  console.log(req)
+  console.log(req.body)
+  console.log(eventType)
+
+  const eventType = req.body.event
+  const user = req.body.user
   const email = user.email
 
   let roles = []
