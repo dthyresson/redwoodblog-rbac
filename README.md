@@ -15,6 +15,8 @@ This `redwoodblog` app is a modified-version of the RedwoodJS blog engine tutori
 
 Note: This app does not store any User information in a database, but rather integrates with Netlify Identity.
 
+You can access a demo at [https://redwoodblog-with-identity.netlify.app/](https://redwoodblog-with-identity.netlify.app/).
+
 ### Roles
 
 There redwoodblog defines the following roles:
@@ -287,6 +289,18 @@ The value of the Identity user's app metadata will be replaced with the above.
 Note: To prevent external requests to event functions, Netlify generates a JSON web signature (JWS) for each event triggered by our platform, and verifies that the signature is correct before invoking an associated event function.
 
 That means you cannot just call the function externally -- you will get a 403 Forbidden status..
+
+### Sign Up
+
+On signup, we will automatically assign you roles based on your email via the "Trigger serverless functions on Identity events" feature.
+
+If your email contains:
+
+* `+author` as in `example+author-example@gmail.com`, yu will be assigned the `author` role
+* `+editor` as in `example+editor-example@gmail.com`, yu will be assigned the `editor` role
+* `+publisher` as in `example+publisher-example@gmail.com`, yu will be assigned the `publisher` role
+
+See: `functions/identity-signup.js` function for implemenation details.
 
 ## New Environment Variables
 
