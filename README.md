@@ -40,7 +40,7 @@ In some blogs, certain individuals might author and certain people may edit (but
 
 Publishers might be able to author, edit and delete.
 
-Admins could do everything -- as well as access user info (but authors, editors, and publisher cannot).
+Admins could do everything -- as well as access user info (but authors, editors, and publishers cannot).
 
 Users can be assigned roles. Given the role, their access to data and perform tasks can be controlled.
 
