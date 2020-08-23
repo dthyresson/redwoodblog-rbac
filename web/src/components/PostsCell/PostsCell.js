@@ -16,7 +16,11 @@ export const QUERY = gql`
   }
 `
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => (
+  <div className=" ease-in transition-opacity duration-300 opacity-0 opacity-100 animate-bounce">
+    <div className="rw-text-center">Loading...</div>
+  </div>
+)
 
 export const Empty = () => {
   const { hasRole } = useAuth()
