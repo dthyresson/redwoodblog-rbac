@@ -1,6 +1,9 @@
 export const handler = async (req, _context) => {
   console.log(req)
   console.log(req.body)
+
+  const eventType = req.body.event
+
   console.log(eventType)
 
   const eventType = req.body.event
