@@ -17,7 +17,7 @@ export const QUERY = gql`
 
 export const Loading = () => {
   return (
-    <div className="bg-white overflow-hidden ease-in transition-opacity duration-300 opacity-0 opacity-100">
+    <div className="bg-white overflow-hidden ease-in transition-opacity duration-1000 opacity-0 opacity-100">
       <div className="px-4 py-5 sm:p-6">Loading ...</div>
     </div>
   )

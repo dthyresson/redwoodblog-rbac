@@ -17,7 +17,7 @@ export const QUERY = gql`
 `
 
 export const Loading = () => (
-  <div className=" ease-in transition-opacity duration-300 opacity-0 opacity-100 animate-bounce">
+  <div className=" ease-in transition-opacity duration-1000 opacity-0 opacity-100 animate-bounce">
     <div className="rw-text-center">Loading...</div>
   </div>
 )
