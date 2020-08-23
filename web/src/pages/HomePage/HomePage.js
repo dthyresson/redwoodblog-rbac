@@ -1,14 +1,14 @@
 import BlogLayout from 'src/layouts/BlogLayout'
-import StackedLayout from 'src/layouts/StackedLayout'
+import SidebarLayout from 'src/layouts/SidebarLayout'
 import BlogPostsCell from 'src/components/BlogPostsCell'
 
 const HomePage = () => {
   return (
-    <StackedLayout>
+    <SidebarLayout>
       <BlogLayout>
         <BlogPostsCell />
       </BlogLayout>
-    </StackedLayout>
+    </SidebarLayout>
   )
 }
 

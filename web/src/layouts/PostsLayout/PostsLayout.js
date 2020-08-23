@@ -1,16 +1,16 @@
 import { Link, routes } from '@redwoodjs/router'
 import { Flash } from '@redwoodjs/web'
 import { useAuth } from '@redwoodjs/auth'
-import StackedLayout from 'src/layouts/StackedLayout'
+import SidebarLayout from 'src/layouts/SidebarLayout'
 
 const PostsLayout = (props) => {
   const { hasRole } = useAuth()
 
   return (
-    <StackedLayout>
+    <SidebarLayout>
       <Flash timeout={1000} />
 
-      <div className="rw-scaffold mt-8">
+      <div className="rw-scaffold">
         <header className="rw-header">
           <h1 className="rw-heading rw-heading-primary">
             <Link to={routes.posts()} className="rw-link">
@@ -25,7 +25,7 @@ const PostsLayout = (props) => {
         </header>
         <main className="rw-main">{props.children}</main>
       </div>
-    </StackedLayout>
+    </SidebarLayout>
   )
 }
 

@@ -83,7 +83,9 @@ const PostsList = ({ posts }) => {
                   >
                     View
                   </Link>
-                  {hasRole('editor') && (
+                  {(hasRole('admin') ||
+                    hasRole('publisher') ||
+                    hasRole('editor')) && (
                     <Link
                       to={routes.editPost({ id: post.id })}
                       title={'Edit post ' + post.id}

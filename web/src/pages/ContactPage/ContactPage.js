@@ -11,7 +11,7 @@ import {
 } from '@redwoodjs/forms'
 import { Flash, useMutation, useFlash } from '@redwoodjs/web'
 import { useForm } from 'react-hook-form'
-import StackedLayout from 'src/layouts/StackedLayout'
+import SidebarLayout from 'src/layouts/SidebarLayout'
 
 const CREATE_CONTACT = gql`
   mutation CreateContactMutation($input: CreateContactInput!) {
@@ -41,8 +41,13 @@ const ContactPage = () => {
   }
 
   return (
-    <StackedLayout>
+    <SidebarLayout>
       <Flash timeout={1000} />
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-2xl font-semibold text-gray-900 border-b-2 border-gray-100">
+          Contact
+        </h1>
+      </div>
       <div className="bg-white overflow-hidden shadow rounded-lg mt-8">
         <div className="px-4 py-5 sm:p-6">
           <Form
@@ -129,7 +134,7 @@ const ContactPage = () => {
           </Form>
         </div>
       </div>
-    </StackedLayout>
+    </SidebarLayout>
   )
 }
 

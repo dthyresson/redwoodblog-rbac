@@ -1,11 +1,11 @@
-import StackedLayout from 'src/layouts/StackedLayout'
+import SidebarLayout from 'src/layouts/SidebarLayout'
 import BlogPostCell from 'src/components/BlogPostCell'
 
 const BlogPostPage = ({ id }) => {
   return (
-    <StackedLayout>
+    <SidebarLayout>
       <BlogPostCell id={id}></BlogPostCell>
-    </StackedLayout>
+    </SidebarLayout>
   )
 }
 

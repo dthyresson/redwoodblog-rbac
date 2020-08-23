@@ -2,7 +2,7 @@ import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
 
 const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
-const UPDATE_POST_ROLES = ['admin', 'editor']
+const UPDATE_POST_ROLES = ['admin', 'editor', 'publisher']
 const DELETE_POST_ROLES = ['admin', 'publisher']
 
 export const posts = () => {

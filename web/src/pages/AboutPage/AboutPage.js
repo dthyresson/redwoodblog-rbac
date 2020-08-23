@@ -1,8 +1,13 @@
-import StackedLayout from 'src/layouts/StackedLayout'
+import SidebarLayout from 'src/layouts/SidebarLayout'
 
 const AboutPage = () => {
   return (
-    <StackedLayout>
+    <SidebarLayout>
+      <div className="max-w-7xl mx-auto mb-8">
+        <h1 className="text-2xl font-semibold text-gray-900 border-b-2 border-gray-100">
+          About
+        </h1>
+      </div>
       <div className="bg-white overflow-hidden shadow rounded-lg">
         <div className="px-4 py-5 sm:p-6">
           <p className="prose prose-lg mb-4">
@@ -19,7 +24,7 @@ const AboutPage = () => {
           </p>
         </div>
       </div>
-    </StackedLayout>
+    </SidebarLayout>
   )
 }
 
