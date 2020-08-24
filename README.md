@@ -155,7 +155,7 @@ However, if the user is logged in, the Contact is assigned a `userId` and the `e
 | Publisher  |   |   |   |   |
 ---
 
-# User Profile
+## User Profile
 
 The user's profile is entirely stored in the decoded access token.
 
