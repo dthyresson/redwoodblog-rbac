@@ -60,47 +60,49 @@ const ContactPage = () => {
               error={error}
               wrapperStyle={{ color: 'red', backgroundColor: 'lavenderblush' }}
             />
-            <div>
-              <div className="mt-1 relative rounded-md shadow-sm">
-                <Label
-                  name="name"
-                  className="block text-sm font-medium leading-5 text-gray-700"
-                  errorClassName="error"
-                >
-                  Name
-                </Label>
-                <TextField
-                  name="name"
-                  className="form-input block w-full sm:text-sm sm:leading-5"
-                  validation={{ required: true }}
-                  errorClassName="error"
-                />
-                <FieldError name="name" className="error" />
-              </div>
-            </div>
             {!isAuthenticated && (
-              <div>
-                <div className="mt-1 relative rounded-md shadow-sm">
-                  <Label
-                    name="name"
-                    className="block text-sm font-medium leading-5 text-gray-700"
-                    errorClassName="error"
-                  >
-                    Email
-                  </Label>
-                  <TextField
-                    className="form-input block w-full sm:text-sm sm:leading-5"
-                    placeholder="you@example.com"
-                    name="email"
-                    id="email"
-                    validation={{
-                      required: true,
-                    }}
-                    errorClassName="error"
-                  />
-                  <FieldError name="email" className="error" />
+              <>
+                <div>
+                  <div className="mt-1 relative rounded-md shadow-sm">
+                    <Label
+                      name="name"
+                      className="block text-sm font-medium leading-5 text-gray-700"
+                      errorClassName="error"
+                    >
+                      Name
+                    </Label>
+                    <TextField
+                      name="name"
+                      className="form-input block w-full sm:text-sm sm:leading-5"
+                      validation={{ required: true }}
+                      errorClassName="error"
+                    />
+                    <FieldError name="name" className="error" />
+                  </div>
                 </div>
-              </div>
+                <div>
+                  <div className="mt-1 relative rounded-md shadow-sm">
+                    <Label
+                      name="name"
+                      className="block text-sm font-medium leading-5 text-gray-700"
+                      errorClassName="error"
+                    >
+                      Email
+                    </Label>
+                    <TextField
+                      className="form-input block w-full sm:text-sm sm:leading-5"
+                      placeholder="you@example.com"
+                      name="email"
+                      id="email"
+                      validation={{
+                        required: true,
+                      }}
+                      errorClassName="error"
+                    />
+                    <FieldError name="email" className="error" />
+                  </div>
+                </div>
+              </>
             )}
             <div>
               <div className="mt-1 relative rounded-md shadow-sm">

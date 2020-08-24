@@ -13,7 +13,7 @@ export const schema = gql`
   }
 
   input CreateContactInput {
-    name: String!
+    name: String
     email: String
     message: String!
   }
