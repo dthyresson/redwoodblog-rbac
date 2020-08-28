@@ -42,10 +42,7 @@ export const Success = ({ post }) => {
   }
 
   return (
-    (hasRole('admin') ||
-      hasRole('author') ||
-      hasRole('editor') ||
-      hasRole('publisher')) && (
+    hasRole(['admin', 'author', 'editor', 'publisher']) && (
       <div className="rw-segment">
         <header className="rw-segment-header">
           <h2 className="rw-heading rw-heading-secondary">

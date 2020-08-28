@@ -304,7 +304,7 @@ If your email contains:
 * `+editor` as in `example+editor-example@gmail.com`, you will be assigned the `editor` role
 * `+publisher` as in `example+publisher-example@gmail.com`, you will be assigned the `publisher` role
 
-See: `functions/identity-signup.js` function for implemenation details.
+See: `functions/identity-signup.js` function for implementation details.
 
 ## New Environment Variables
 
@@ -326,7 +326,7 @@ SITE_NAME - Used to link to your Netlify Identity management page for your site
 
 ## Reseed Data via Repeater.dev
 
-Note that the demo app schedules a re-seed of the data dail via [Repeater.dev](https://www.repeater.dev) and a [Netlify Build Hook](https://docs.netlify.com/configure-builds/build-hooks).
+Note that the demo app schedules a re-seed of the data daily via [Repeater.dev](https://www.repeater.dev) and a [Netlify Build Hook](https://docs.netlify.com/configure-builds/build-hooks).
 
 Any user-added posts will be removed.
 

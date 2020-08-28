@@ -154,10 +154,7 @@ const SidebarLayout = ({ children }) => {
                       )}
 
                       {isAuthenticated &&
-                        (hasRole('admin') ||
-                          hasRole('author') ||
-                          hasRole('editor') ||
-                          hasRole('publisher')) && (
+                        hasRole(['admin', 'author', 'editor', 'publisher']) && (
                           <NavLink
                             to={routes.posts()}
                             className="group flex items-center px-2 py-2 text-base leading-6 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-100 transition ease-in-out duration-150"
@@ -361,10 +358,7 @@ const SidebarLayout = ({ children }) => {
                     </NavLink>
                   )}
                   {isAuthenticated &&
-                    (hasRole('admin') ||
-                      hasRole('author') ||
-                      hasRole('editor') ||
-                      hasRole('publisher')) && (
+                    hasRole(['admin', 'author', 'editor', 'publisher']) && (
                       <NavLink
                         to={routes.posts()}
                         className="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150"

@@ -19,7 +19,6 @@ const Routes = () => {
       <Route path="/blog-post/{id:Int}" page={BlogPostPage} name="blogPost" />
 
       <Private unauthenticated="home">
-        <Route path="/settings" page={SettingsPage} name="settings" />
         <Route path="/admin/posts/new" page={NewPostPage} name="newPost" />
         <Route
           path="/admin/posts/{id:Int}/edit"
@@ -33,6 +32,11 @@ const Routes = () => {
       <Private unauthenticated="home" role="admin">
         <Route path="/admin/users" page={UsersPage} name="users" />
       </Private>
+
+      <Private unauthenticated="home" role={['admin', 'editor']}>
+        <Route path="/settings" page={SettingsPage} name="settings" />
+      </Private>
+
       <Route notfound page={NotFoundPage} />
     </Router>
   )

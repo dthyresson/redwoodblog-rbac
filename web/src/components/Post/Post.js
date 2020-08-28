@@ -79,7 +79,7 @@ const Post = ({ post }) => {
         </table>
       </div>
       <nav className="rw-button-group">
-        {(hasRole('admin') || hasRole('editor') || hasRole('publisher')) && (
+        {hasRole(['admin', 'editor', 'publisher']) && (
           <Link
             to={routes.editPost({ id: post.id })}
             className="rw-button rw-button-blue"
@@ -87,16 +87,15 @@ const Post = ({ post }) => {
             Edit
           </Link>
         )}
-        {hasRole('admin') ||
-          (hasRole('publisher') && (
-            <a
-              href="#"
-              className="rw-button rw-button-red"
-              onClick={() => onDeleteClick(post.id)}
-            >
-              Delete
-            </a>
-          ))}
+        {hasRole(['admin', 'publisher']) && (
+          <a
+            href="#"
+            className="rw-button rw-button-red"
+            onClick={() => onDeleteClick(post.id)}
+          >
+            Delete
+          </a>
+        )}
       </nav>
     </>
   )

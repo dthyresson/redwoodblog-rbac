@@ -16,7 +16,7 @@ export const post = ({ id }) => {
 }
 
 export const createPost = ({ input }) => {
-  requireAuth({ roles: CREATE_POST_ROLES })
+  requireAuth({ role: CREATE_POST_ROLES })
 
   return db.post.create({
     data: {
@@ -28,7 +28,7 @@ export const createPost = ({ input }) => {
 }
 
 export const updatePost = ({ id, input }) => {
-  requireAuth({ roles: UPDATE_POST_ROLES })
+  requireAuth({ role: UPDATE_POST_ROLES })
 
   return db.post.update({
     data: {
@@ -42,7 +42,7 @@ export const updatePost = ({ id, input }) => {
 }
 
 export const deletePost = ({ id }) => {
-  requireAuth({ roles: DELETE_POST_ROLES })
+  requireAuth({ role: DELETE_POST_ROLES })
 
   return db.post.delete({
     where: { id },

@@ -62,7 +62,7 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  * whether or not they are assigned a role, and optionally raise an
  * error if they're not.
  *
- * @param {string=} role - An optional role
+ * @param {string=, string[]=} role - An optional role
  *
  * @example - No role-based access control.
  *
@@ -73,7 +73,7 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  * @example - User info is conatined in the decoded token and roles extracted
  *
  * export const getCurrentUser = async (decoded, { _token, _type }) => {
- *   return { decoded, roles: parseJWT({ decoded }).roles }
+ *   return { ...decoded, roles: parseJWT({ decoded }).roles }
  * }
  *
  * @example - User record query by email with namespaced app_metadata roles
@@ -97,10 +97,8 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  *   }
  * }
  */
-export const getCurrentUser = async (decoded) => {
-  return (
-    context.currentUser || { ...decoded, roles: parseJWT({ decoded }).roles }
-  )
+export const getCurrentUser = async (decoded, { _token, _type }) => {
+  return { ...decoded, roles: parseJWT({ decoded }).roles }
 }
 
 /**
@@ -109,7 +107,7 @@ export const getCurrentUser = async (decoded) => {
  * error if they're not.
  *
  * @param {string=} roles - An optional role or list of roles
- * @param {array=} roles - An optional list of roles
+ * @param {string[]=} roles - An optional list of roles
 
  * @example
  *
@@ -118,28 +116,31 @@ export const getCurrentUser = async (decoded) => {
  *
  * @example
  *
- * // checks if currentUser is authenticated and assigned one of thw given roles
- * requireAuth({ roles: 'admin' })
- * requireAuth({ roles: 'admin' })
+ * // checks if currentUser is authenticated and assigned one of the given roles
+ * requireAuth({ role: 'admin' })
+ * requireAuth({ role: ['editor', 'author'] })
+ * requireAuth({ role: ['publisher'] })
  */
-export const requireAuth = ({ roles } = {}) => {
+export const requireAuth = ({ role } = {}) => {
   if (!context.currentUser) {
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
   if (
-    typeof roles !== 'undefined' &&
-    typeof roles === 'string' &&
-    !context.currentUser.roles?.includes(roles)
+    typeof role !== 'undefined' &&
+    typeof role === 'string' &&
+    !context.currentUser.roles?.includes(role)
   ) {
     throw new ForbiddenError("You don't have access to do that.")
   }
 
   if (
-    typeof roles !== 'undefined' &&
-    Array.isArray(roles) &&
-    !context.currentUser.roles?.some((role) => roles.includes(role))
+    typeof role !== 'undefined' &&
+    Array.isArray(role) &&
+    !context.currentUser.roles?.some((r) => role.includes(r))
   ) {
+    console.log("You don't have access to do that.")
+
     throw new ForbiddenError("You don't have access to do that.")
   }
 }
