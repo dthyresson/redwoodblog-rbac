@@ -6,10 +6,10 @@
     "defaults"
   ],
   "dependencies": {
-    "@redwoodjs/auth": "^0.16.0",
-    "@redwoodjs/forms": "^0.16.0",
-    "@redwoodjs/router": "^0.16.0",
-    "@redwoodjs/web": "^0.16.0",
+    "@redwoodjs/auth": "^0.16.1-canary.22",
+    "@redwoodjs/forms": "^0.16.1-canary.22",
+    "@redwoodjs/router": "^0.16.1-canary.22",
+    "@redwoodjs/web": "^0.16.1-canary.22",
     "@tailwindcss/ui": "^0.5.0",
     "moment": "^2.27.0",
     "netlify-identity-widget": "^1.9.1",

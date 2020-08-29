@@ -87,16 +87,15 @@ const Post = ({ post }) => {
             Edit
           </Link>
         )}
-        {hasRole('admin') ||
-          (hasRole('publisher') && (
-            <a
-              href="#"
-              className="rw-button rw-button-red"
-              onClick={() => onDeleteClick(post.id)}
-            >
-              Delete
-            </a>
-          ))}
+        {(hasRole('admin') || hasRole('publisher')) && (
+          <a
+            href="#"
+            className="rw-button rw-button-red"
+            onClick={() => onDeleteClick(post.id)}
+          >
+            Delete
+          </a>
+        )}
       </nav>
     </>
   )
