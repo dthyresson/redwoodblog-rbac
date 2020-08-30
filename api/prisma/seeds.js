@@ -11,7 +11,44 @@ async function main() {
   // will result in the same database state (usually by checking for the
   // existence of a record before trying to create it). For example:
   //
-  // Note: these lyric snippets are copyrighted by their authors.
+
+  // User Role experiment for docs
+  // const uuid = '1283d760-2a8a-4dec-c12a-52cafcaf7f52'
+
+  // const newUserProfile = await db.userProfile.create({
+  //   data: { uuid },
+  // })
+
+  // console.log(newUserProfile)
+
+  // const userRole = await db.userRole.create({
+  //   data: {
+  //     name: 'editor',
+  //     userProfile: {
+  //       connect: { uuid },
+  //     },
+  //   },
+  // })
+
+  // console.log(userRole)
+
+  // const userProfile = await db.userProfile.findOne({
+  //   where: { uuid },
+  //   include: { userRoles: true },
+  // })
+
+  // console.log(userProfile)
+
+  // const userRoles = await db.userRole.findMany({
+  //   where: { userProfile: { uuid } },
+  //   select: { name: true },
+  // })
+
+  // const roles = userRoles.map((role) => {
+  //   return role.name
+  // })
+
+  // console.log(roles)
 
   if (process.env.INCOMING_HOOK_URL === process.env.INCOMING_RESEED_HOOK_URL) {
     console.log(`Building via Build Hook ${process.env.INCOMING_HOOK_URL}`)

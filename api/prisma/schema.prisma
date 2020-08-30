@@ -28,3 +28,26 @@ model Contact {
   message   String
   userId    String?
 }
+
+// Note: these models are *not* used in the app, but created as an example for the
+// Redwood Cookbook to explain how roles may be stored in a databse instead of
+// by the Identity Service
+
+model UserProfile {
+  id        Int        @id @default(autoincrement())
+  uuid      String     @unique
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+  userRoles UserRole[]
+}
+
+model UserRole {
+  id            Int          @id @default(autoincrement())
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @default(now())
+  name          String
+  userProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
+  userProfileId Int?
+
+  @@unique([name, userProfileId])
+}
