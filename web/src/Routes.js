@@ -20,12 +20,24 @@ const Routes = () => {
 
       <Private unauthenticated="home">
         <Route path="/settings" page={SettingsPage} name="settings" />
+      </Private>
+
+      <Private unauthenticated="home" role={['admin', 'author', 'publisher']}>
         <Route path="/admin/posts/new" page={NewPostPage} name="newPost" />
+      </Private>
+
+      <Private unauthenticated="home" role={['admin', 'editor', 'publisher']}>
         <Route
           path="/admin/posts/{id:Int}/edit"
           page={EditPostPage}
           name="editPost"
         />
+      </Private>
+
+      <Private
+        unauthenticated="home"
+        role={['admin', 'author', 'editor', 'publisher']}
+      >
         <Route path="/admin/posts/{id:Int}" page={PostPage} name="post" />
         <Route path="/admin/posts" page={PostsPage} name="posts" />
       </Private>

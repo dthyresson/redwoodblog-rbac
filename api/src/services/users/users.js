@@ -8,7 +8,7 @@ export const users = async () => {
 
   if (adminToken) {
     const { body } = await got.get(
-      'https://redwoodblog-with-identity.netlify.app/.netlify/identity/admin/users',
+      `https://${process.env.SITE_NAME}.netlify.app/.netlify/identity/admin/users`,
       {
         responseType: 'json',
         headers: {
