@@ -5,17 +5,15 @@ export const users = async () => {
   requireAuth({ role: 'admin' })
 
   const adminToken = context.clientContext?.identity?.token
+  const identityEndpoint = context.clientContext?.identity?.url
 
-  if (adminToken) {
-    const { body } = await got.get(
-      `https://${process.env.SITE_NAME}.netlify.app/.netlify/identity/admin/users`,
-      {
-        responseType: 'json',
-        headers: {
-          authorization: `Bearer ${adminToken}`,
-        },
-      }
-    )
+  if (adminToken && identityEndpoint) {
+    const { body } = await got.get(`${identityEndpoint}/admin/users`, {
+      responseType: 'json',
+      headers: {
+        authorization: `Bearer ${adminToken}`,
+      },
+    })
 
     return body['users']
   } else {
