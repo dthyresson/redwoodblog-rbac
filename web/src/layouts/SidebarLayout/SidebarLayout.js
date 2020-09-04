@@ -7,7 +7,7 @@ import { Transition } from '@tailwindui/react'
 import logo from './redwood_logotype.png'
 
 const SidebarLayout = ({ children }) => {
-  const { logIn, logOut, isAuthenticated, hasRole, currentUser } = useAuth()
+  const { logIn, logOut, signUp, isAuthenticated, hasRole, currentUser } = useAuth()
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -198,7 +198,7 @@ const SidebarLayout = ({ children }) => {
                 <a
                   href="#"
                   className="group flex items-center px-2 py-2 text-base leading-6 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-100 transition ease-in-out duration-150"
-                  onClick={isAuthenticated ? logOut : logIn}
+                  onClick={isAuthenticated ? logOut : signUp}
                 >
                   {isAuthenticated && (
                     <svg
@@ -226,7 +226,7 @@ const SidebarLayout = ({ children }) => {
                       ></path>
                     </svg>
                   )}
-                  <span>{isAuthenticated ? 'Log Out' : 'Log In'}</span>
+                  <span>{isAuthenticated ? 'Log Out' : 'Sign Up'}</span>
                 </a>
               </nav>
             </div>
@@ -403,7 +403,7 @@ const SidebarLayout = ({ children }) => {
                 <a
                   href="#"
                   className="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-gray-600 rounded-md hover:text-gray-900 hover:bg-gray-50 focus:outline-none focus:text-gray-900 focus:bg-gray-50 transition ease-in-out duration-150"
-                  onClick={isAuthenticated ? logOut : logIn}
+                  onClick={isAuthenticated ? logOut : signUp}
                 >
                   {isAuthenticated && (
                     <svg
@@ -432,7 +432,7 @@ const SidebarLayout = ({ children }) => {
                       ></path>
                     </svg>
                   )}
-                  <span>{isAuthenticated ? 'Log Out' : 'Log In'}</span>
+                  <span>{isAuthenticated ? 'Log Out' : 'Sign Up'}</span>
                 </a>
               </nav>
             </div>

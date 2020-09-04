@@ -1,3 +1,4 @@
+.redwood
 .idea
 .DS_Store
 .env
@@ -8,3 +9,4 @@ dist-babel
 node_modules
 yarn-error.log
 web/public/mockServiceWorker.js
+
