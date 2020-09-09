@@ -49,6 +49,13 @@ const SettingsPage = () => {
                   </dt>
                   <dd className="mt-1 text-sm leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
                     <ul className="border border-gray-200 rounded-md">
+                      {(currentUser.roles === undefined ||
+                        currentUser.roles.length === 0) && (
+                        <li key="no-roles">
+                          Roles set manually or via email pattern of +role
+                          (except for admin).
+                        </li>
+                      )}
                       {currentUser.roles.map((role) => {
                         return (
                           <li
