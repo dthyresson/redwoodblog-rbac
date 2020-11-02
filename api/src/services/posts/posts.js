@@ -1,5 +1,6 @@
 import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
+import { ForbiddenError } from '@redwoodjs/api'
 
 const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
 const UPDATE_POST_ROLES = ['admin', 'editor', 'publisher']
@@ -29,6 +30,10 @@ export const createPost = ({ input }) => {
 
 export const updatePost = ({ id, input }) => {
   requireAuth({ roles: UPDATE_POST_ROLES })
+
+  if (post === undefined) {
+    throw new ForbiddenError("You don't have access to do that.")
+  }
 
   return db.post.update({
     data: {
