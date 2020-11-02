@@ -8,11 +8,11 @@
 # By default, a Redwood app's apiProxyPath is the same as Netlify's.
 
 [web]
-  port = 8910
+  port = 9910
   apiProxyPath = "/.netlify/functions"
   includeEnvironmentVariables = ['SITE_NAME', 'GOTRUE_JWT_EXP']
 [api]
-  port = 8911
+  port = 9911
   includeEnvironmentVariables = ['SITE_NAME', 'NETLIFY_IDENTITY_REGISTRATION_WEBHOOK_SECRET','INCOMING_RESEED_HOOK_URL']
 [browser]
   open = true

@@ -2,10 +2,13 @@ import { useMutation, useFlash } from '@redwoodjs/web'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
+import { QUERY } from 'src/components/PostsCell'
+
 const DELETE_POST_MUTATION = gql`
   mutation DeletePostMutation($id: Int!) {
     deletePost(id: $id) {
       id
+      message
     }
   }
 `
@@ -20,10 +23,6 @@ const timeTag = (datetime) => {
   )
 }
 
-const checkboxInputTag = (checked) => {
-  return <input type="checkbox" checked={checked} disabled />
-}
-
 const Post = ({ post }) => {
   const { addMessage } = useFlash()
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
@@ -31,6 +30,11 @@ const Post = ({ post }) => {
       navigate(routes.posts())
       addMessage('Post deleted.', { classes: 'rw-flash-success' })
     },
+    // This refetches the query on the list page. Read more about other ways to
+    // update the cache over here:
+    // https://www.apollographql.com/docs/react/data/mutations/#making-all-other-cache-updates
+    refetchQueries: [{ query: QUERY }],
+    awaitRefetchQueries: true,
   })
 
   const onDeleteClick = (id) => {
