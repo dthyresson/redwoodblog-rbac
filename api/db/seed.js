@@ -32,7 +32,7 @@ async function main() {
 
   // console.log(userRole)
 
-  // const userProfile = await db.userProfile.findOne({
+  // const userProfile = await db.userProfile.findUnique({
   //   where: { uuid },
   //   include: { userRoles: true },
   // })

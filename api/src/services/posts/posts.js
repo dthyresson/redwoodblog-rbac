@@ -11,7 +11,7 @@ export const posts = () => {
 }
 
 export const post = ({ id }) => {
-  return db.post.findOne({
+  return db.post.findUnique({
     where: { id },
   })
 }
@@ -30,10 +30,6 @@ export const createPost = ({ input }) => {
 
 export const updatePost = ({ id, input }) => {
   requireAuth({ roles: UPDATE_POST_ROLES })
-
-  if (post === undefined) {
-    throw new ForbiddenError("You don't have access to do that.")
-  }
 
   return db.post.update({
     data: {
@@ -55,5 +51,6 @@ export const deletePost = ({ id }) => {
 }
 
 export const Post = {
-  user: (_obj, { root }) => db.post.findOne({ where: { id: root.id } }).user(),
+  user: (_obj, { root }) =>
+    db.post.findUnique({ where: { id: root.id } }).user(),
 }
