@@ -1,3 +1,5 @@
+import { logger } from 'src/lib/logger'
+
 export const handler = async (req, _context) => {
   const body = JSON.parse(req.body)
 
@@ -20,7 +22,9 @@ export const handler = async (req, _context) => {
       roles.push('publisher')
     }
 
-    console.log(`User: ${user.email} signed-up and given roles: ${roles}`)
+    logger.log(`User: ${user.id} signed-up and given roles: ${roles}`)
+    logger.debug(user, `User: ${user.id} details`)
+
     return {
       statusCode: 200,
       body: JSON.stringify({ app_metadata: { roles: roles } }),
