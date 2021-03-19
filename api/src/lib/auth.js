@@ -97,10 +97,20 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  *   }
  * }
  */
-export const getCurrentUser = async (decoded) => {
-  return (
-    context.currentUser || { ...decoded, roles: parseJWT({ decoded }).roles }
-  )
+
+import { logger } from 'src/lib/logger'
+
+export const getCurrentUser = async (decoded, { _token }, { event }) => {
+  logger.trace('In getCurrentUser')
+
+  const user = context.currentUser || {
+    ...decoded,
+    roles: parseJWT({ decoded }).roles,
+  }
+
+  logger.debug(user, `Info for user ${user.sub}`)
+
+  return user
 }
 
 /**
@@ -124,6 +134,7 @@ export const getCurrentUser = async (decoded) => {
  */
 export const requireAuth = ({ roles } = {}) => {
   if (!context.currentUser) {
+    logger.warn("You don't have permission to do that.")
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
@@ -132,6 +143,7 @@ export const requireAuth = ({ roles } = {}) => {
     typeof roles === 'string' &&
     !context.currentUser.roles?.includes(roles)
   ) {
+    logger.warn("You don't have access to do that.")
     throw new ForbiddenError("You don't have access to do that.")
   }
 
@@ -140,6 +152,7 @@ export const requireAuth = ({ roles } = {}) => {
     Array.isArray(roles) &&
     !context.currentUser.roles?.some((role) => roles.includes(role))
   ) {
+    logger.warn("You don't have access to do that.")
     throw new ForbiddenError("You don't have access to do that.")
   }
 }

@@ -1,19 +1,24 @@
 import { db } from 'src/lib/db'
 import { requireAuth } from 'src/lib/auth'
-import { ForbiddenError } from '@redwoodjs/api'
+import { logger } from 'src/lib/logger'
 
 const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
 const UPDATE_POST_ROLES = ['admin', 'editor', 'publisher']
 const DELETE_POST_ROLES = ['admin', 'publisher']
 
 export const posts = () => {
+  logger.trace('Fetching posts...')
   return db.post.findMany({ orderBy: { title: 'asc' } })
 }
 
-export const post = ({ id }) => {
-  return db.post.findUnique({
+export const post = async ({ id }) => {
+  const post = await db.post.findUnique({
     where: { id },
   })
+
+  logger.debug({ payload: post }, `Fetching post ${post.title}`)
+
+  return post
 }
 
 export const createPost = ({ input }) => {

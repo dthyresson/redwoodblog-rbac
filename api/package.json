@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "@redwoodjs/api": "^0.27.1",
+    "@redwoodjs/api": "^0.27.2-canary.19",
     "got": "^11.5.2"
   }
 }
