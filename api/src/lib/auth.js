@@ -100,8 +100,9 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
 
 import { logger } from 'src/lib/logger'
 
-export const getCurrentUser = async (decoded, { _token }, { event }) => {
+export const getCurrentUser = async (decoded) => {
   logger.trace('In getCurrentUser')
+  logger.debug({ current: decoded }, 'Decoded getCurrentUser')
 
   const user = context.currentUser || {
     ...decoded,

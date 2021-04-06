@@ -7,7 +7,7 @@
     ]
   },
   "devDependencies": {
-    "@redwoodjs/core": "^0.27.2-canary.19",
+    "@redwoodjs/core": "^0.28.4",
     "netlify-plugin-prisma-provider": "^0.3.0"
   },
   "eslintConfig": {
@@ -17,5 +17,9 @@
     "node": ">=12",
     "yarn": ">=1.15"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "resolutions": {
+    "react-dom": "17.0.1",
+    "react": "17.0.1"
+  }
 }

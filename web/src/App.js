@@ -3,13 +3,15 @@ import netlifyIdentity from 'netlify-identity-widget'
 import { RedwoodApolloProvider } from '@redwoodjs/web/apollo'
 import { FatalErrorBoundary } from '@redwoodjs/web'
 
+import { isBrowser } from '@redwoodjs/prerender/browserUtils'
+
 import Routes from 'src/Routes'
 import FatalErrorPage from 'src/pages/FatalErrorPage'
 
 import './scaffold.css'
 import './index.css'
 
-netlifyIdentity.init()
+isBrowser && netlifyIdentity.init()
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
