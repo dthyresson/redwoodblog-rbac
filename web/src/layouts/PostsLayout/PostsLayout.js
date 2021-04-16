@@ -1,13 +1,12 @@
 import { Link, routes } from '@redwoodjs/router'
 import { Flash } from '@redwoodjs/web'
 import { useAuth } from '@redwoodjs/auth'
-import SidebarLayout from 'src/layouts/SidebarLayout'
 
 const PostsLayout = (props) => {
   const { hasRole } = useAuth()
 
   return (
-    <SidebarLayout>
+    <>
       <Flash timeout={1000} />
 
       <div className="rw-scaffold">
@@ -25,7 +24,7 @@ const PostsLayout = (props) => {
         </header>
         <main className="rw-main">{props.children}</main>
       </div>
-    </SidebarLayout>
+    </>
   )
 }
 
