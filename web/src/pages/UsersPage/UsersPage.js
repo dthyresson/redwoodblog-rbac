@@ -1,12 +1,11 @@
 import { useAuth } from '@redwoodjs/auth'
-import SidebarLayout from 'src/layouts/SidebarLayout'
 import UsersCell from 'src/components/UsersCell'
 
 const UsersPage = () => {
   const { isAuthenticated, hasRole } = useAuth()
 
   return (
-    <SidebarLayout>
+    <>
       {isAuthenticated && hasRole('admin') && (
         <div>
           <div className="max-w-7xl mx-auto mb-8">
@@ -17,8 +16,8 @@ const UsersPage = () => {
           <UsersCell />
         </div>
       )}
-    </SidebarLayout>
+    </>
   )
 }
 
-export default    UsersPage
+export default UsersPage

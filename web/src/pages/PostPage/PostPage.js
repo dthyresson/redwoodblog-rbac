@@ -1,12 +1,7 @@
-import PostsLayout from 'src/layouts/PostsLayout'
 import PostCell from 'src/components/PostCell'
 
 const PostPage = ({ id }) => {
-  return (
-    <PostsLayout>
-      <PostCell id={id} />
-    </PostsLayout>
-  )
+  return <PostCell id={id} />
 }
 
 export default PostPage

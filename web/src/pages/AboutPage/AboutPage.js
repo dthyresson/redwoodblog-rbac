@@ -1,11 +1,10 @@
-import SidebarLayout from 'src/layouts/SidebarLayout'
 import { useAuth } from '@redwoodjs/auth'
 
 const AboutPage = () => {
   const { logIn, signUp, isAuthenticated } = useAuth()
 
   return (
-    <SidebarLayout>
+    <>
       {!isAuthenticated && (
         <div className="bg-white">
           <div className="max-w-screen-xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
@@ -298,7 +297,7 @@ const AboutPage = () => {
           </div>
         </div>
       </div>
-    </SidebarLayout>
+    </>
   )
 }
 

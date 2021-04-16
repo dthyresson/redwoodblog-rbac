@@ -1,5 +1,4 @@
 import { useAuth } from '@redwoodjs/auth'
-import SidebarLayout from 'src/layouts/SidebarLayout'
 
 const SettingsPage = () => {
   const { isAuthenticated, currentUser, userMetadata, hasRole } = useAuth()
@@ -13,7 +12,7 @@ const SettingsPage = () => {
   }
 
   return (
-    <SidebarLayout>
+    <>
       {isAuthenticated && (
         <div>
           <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -101,7 +100,7 @@ const SettingsPage = () => {
           </div>
         </div>
       )}
-    </SidebarLayout>
+    </>
   )
 }
 
