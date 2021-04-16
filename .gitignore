@@ -11,3 +11,4 @@ yarn-error.log
 web/public/mockServiceWorker.js
 logs/*/**å
 
+redwood/*

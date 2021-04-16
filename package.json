@@ -3,12 +3,12 @@
   "workspaces": {
     "packages": [
       "api",
-      "web"
+      "web",
+      "redwood/*"
     ]
   },
   "devDependencies": {
-    "@redwoodjs/core": "^0.28.4",
-    "netlify-plugin-prisma-provider": "^0.3.0"
+    "@redwoodjs/core": "^0.30.0"
   },
   "eslintConfig": {
     "extends": "@redwoodjs/eslint-config"
