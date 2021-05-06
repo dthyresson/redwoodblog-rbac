@@ -323,18 +323,36 @@ SITE_NAME - Used to link to your Netlify Identity management page for your site
   port = 8911
   includeEnvironmentVariables = ['SITE_NAME']
 ```
+# Local Dev/Deployment and Database Setup
 
+Note: while you may develop locally in SQLite, it's recommended in your `env` to use a PostgreSQL database instead since that is what you would use in production when deployed ot Netlify.
+
+```
+DATABASE_URL=postgres://<username>:<password>@host/database
+```
+
+> Prisma only supports one database provider at a time, and since we can't use SQLite in production and must switch the Postgres or MySQL, that means we need to use the same database on our local development system after making this change.
+
+If you intend to use SQLite, be sure to change `api/db/schema.prisma` to use `sqlite` as the provider:
+
+For more info on PostgreSQL setup and deployment options, please see [The Database](https://learn.redwoodjs.com/docs/tutorial/deployment#the-database) in the RedwoodJS Tutorial documentation and also [Local Postgres Setup](https://redwoodjs.com/docs/local-postgres-setup) in the RedwoodJS documentation.
+
+ ``` js
+ // api/db/schema.prisma
+ ...
+
+ datasource DS {
+   provider = "sqlite"
+   url      = env("DATABASE_URL")
+ }
+```
 ## Reseed Data via Repeater.dev
 
-Note that the demo app schedules a re-seed of the data dail via [Repeater.dev](https://www.repeater.dev) and a [Netlify Build Hook](https://docs.netlify.com/configure-builds/build-hooks).
+Note that the deployed demo app schedules a re-seed of the data daily via [Repeater.dev](https://www.repeater.dev) and a [Netlify Build Hook](https://docs.netlify.com/configure-builds/build-hooks).
 
-Any user-added posts will be removed.
+Any user-added posts will be removed from the demo -- but not your app.
 
 ---
-
-# About Redwood
->**HEADS UP:** RedwoodJS is _NOT_ ready for use in Production. It relies heavily on Prisma2, which is currently in testing with an expected production release coming soon. See status at ["Is Prisma2 Ready?"](https://isprisma2ready.com)
-
 ## Getting Started
 - [Redwoodjs.com](https://redwoodjs.com): home to all things RedwoodJS.
 - [Tutorial](https://redwoodjs.com/tutorial/welcome-to-redwood): getting started and complete overview guide.
