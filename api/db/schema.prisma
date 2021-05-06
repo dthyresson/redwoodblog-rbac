@@ -4,6 +4,7 @@ generator client {
 }
 
 datasource DS {
+  // Change this if using SQLite
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
