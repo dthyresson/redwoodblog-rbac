@@ -323,7 +323,7 @@ SITE_NAME - Used to link to your Netlify Identity management page for your site
   port = 8911
   includeEnvironmentVariables = ['SITE_NAME']
 ```
-# Local Dev/Deployment and Database Setup
+## Local Dev/Deployment and Database Setup
 
 Note: while you may develop locally in SQLite, it's recommended in your `env` to use a PostgreSQL database instead since that is what you would use in production when deployed ot Netlify.
 
