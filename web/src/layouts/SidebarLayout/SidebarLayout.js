@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { NavLink, Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
+import { Toaster } from '@redwoodjs/web/toast'
 
 import { Transition } from '@tailwindui/react'
 
@@ -494,7 +495,10 @@ const SidebarLayout = ({ children }) => {
           <div className="pt-2 pb-6 md:py-6">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
               <div className="py-4">
-                <div className="h-96">{children}</div>
+                <div className="h-96">
+                  <Toaster />
+                  {children}
+                </div>
               </div>
             </div>
           </div>

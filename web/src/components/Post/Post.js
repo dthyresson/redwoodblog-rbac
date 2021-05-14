@@ -1,4 +1,5 @@
-import { useMutation, useFlash } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/toast'
 import { Link, routes, navigate } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
@@ -24,11 +25,10 @@ const timeTag = (datetime) => {
 }
 
 const Post = ({ post }) => {
-  const { addMessage } = useFlash()
   const [deletePost] = useMutation(DELETE_POST_MUTATION, {
     onCompleted: () => {
       navigate(routes.posts())
-      addMessage('Post deleted.', { classes: 'rw-flash-success' })
+      toast.success('Post deleted.')
     },
     // This refetches the query on the list page. Read more about other ways to
     // update the cache over here:
