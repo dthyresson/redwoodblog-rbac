@@ -22,7 +22,7 @@ export const handler = async (req, _context) => {
       roles.push('publisher')
     }
 
-    logger.log(`User: ${user.id} signed-up and given roles: ${roles}`)
+    logger.debug(`User: ${user.id} signed-up and given roles: ${roles}`)
     logger.debug(user, `User: ${user.id} details`)
 
     return {
