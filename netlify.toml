@@ -4,11 +4,16 @@
   functions = "api/dist/functions"
 
 [dev]
-  # Note be sure to `netlify link` your site first
-  command = "yarn rw dev"
-  framework = "#custom"
-  targetPort = 8910 # The port for your application server, framework or site generator
-  port = 8888 # The port that the netlify dev will be accessible on
+  # To use [Netlify Dev](https://www.netlify.com/products/dev/),
+  # install netlify-cli from https://docs.netlify.com/cli/get-started/#installation
+  # and then use netlify link https://docs.netlify.com/cli/get-started/#link-and-unlink-sites
+  # to connect your local project to a site already on Netlify
+  # then run netlify dev and our app will be accessible on the port specified below
+  framework = "redwoodjs"
+  # Set targetPort to the [web] side port as defined in redwood.toml
+  targetPort = 8910
+  # Point your browser to this port to access your RedwoodJS app
+  port = 8888
 
 [[redirects]]
   from = "/*"

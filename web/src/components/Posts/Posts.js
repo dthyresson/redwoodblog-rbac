@@ -4,8 +4,8 @@ import { useAuth } from '@redwoodjs/auth'
 
 import { QUERY } from 'src/components/PostsCell'
 
-const DELETE_POST_MUTATION = gql`
-  mutation DeletePostMutation($id: Int!) {
+const DELETE_THE_POST_MUTATION = gql`
+  mutation DeleteThePostMutation($id: Int!) {
     deletePost(id: $id) {
       id
     }
@@ -40,7 +40,7 @@ const timeTag = (datetime) => {
 
 const PostsList = ({ posts }) => {
   const { addMessage } = useFlash()
-  const [deletePost] = useMutation(DELETE_POST_MUTATION, {
+  const [deletePost] = useMutation(DELETE_THE_POST_MUTATION, {
     onCompleted: () => {
       addMessage('Post deleted.', { classes: 'rw-flash-success' })
     },
