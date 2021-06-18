@@ -341,7 +341,7 @@ For more info on PostgreSQL setup and deployment options, please see [The Databa
  // api/db/schema.prisma
  ...
 
- datasource DS {
+ datasource db {
    provider = "sqlite"
    url      = env("DATABASE_URL")
  }

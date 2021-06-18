@@ -8,7 +8,11 @@ dist
 dist-babel
 node_modules
 yarn-error.log
+
+api/types/graphql.d.ts
 web/public/mockServiceWorker.js
+web/types/graphql.d.ts
+
 logs/*/**å
 
 redwood/*

@@ -3,7 +3,7 @@ generator client {
   binaryTargets = ["native"]
 }
 
-datasource DS {
+datasource db {
   // Change this if using SQLite
   provider = "postgresql"
   url      = env("DATABASE_URL")
