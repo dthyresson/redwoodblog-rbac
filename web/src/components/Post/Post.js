@@ -8,7 +8,6 @@ const DELETE_POST_MUTATION = gql`
   mutation DeletePostMutation($id: Int!) {
     deletePost(id: $id) {
       id
-      message
     }
   }
 `
@@ -92,13 +91,13 @@ const Post = ({ post }) => {
           </Link>
         )}
         {(hasRole('admin') || hasRole('publisher')) && (
-          <a
+          <button
             href="#"
             className="rw-button rw-button-red"
             onClick={() => onDeleteClick(post.id)}
           >
             Delete
-          </a>
+          </button>
         )}
       </nav>
     </>

@@ -1,4 +1,4 @@
-import { createLogger } from '@redwoodjs/api/logger'
+import { createLogger } from '@redwoodjs/graphql-server/logger'
 
 /**
  * Creates a logger with RedwoodLoggerOptions
@@ -14,4 +14,6 @@ import { createLogger } from '@redwoodjs/api/logger'
  * @param {string | DestinationStream} destination - defines where to log, such as a transport stream or file
  * @param {boolean} showConfig - whether to display logger configuration on initialization
  */
-export const logger = createLogger({ options: { prettyPrint: true } })
+export const logger = createLogger({
+  options: { level: 'info', prettyPrint: true },
+})
