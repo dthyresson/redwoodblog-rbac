@@ -6,10 +6,10 @@
     "defaults"
   ],
   "dependencies": {
-    "@redwoodjs/auth": "^0.34.0",
-    "@redwoodjs/forms": "^0.34.0",
-    "@redwoodjs/router": "^0.34.0",
-    "@redwoodjs/web": "^0.34.0",
+    "@redwoodjs/auth": "^0.34.2-canary.31",
+    "@redwoodjs/forms": "^0.34.2-canary.31",
+    "@redwoodjs/router": "^0.34.2-canary.31",
+    "@redwoodjs/web": "^0.34.2-canary.31",
     "@tailwindcss/ui": "^0.6.0",
     "@tailwindui/react": "^0.1.1",
     "moment": "^2.27.0",

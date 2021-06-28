@@ -34,7 +34,7 @@
 //
 // The parseJWT utility will extract the roles from decoded token.
 //
-// The app_medata claim may or may not be namespaced based on the auth provider.
+// The app_metadata claim may or may not be namespaced based on the auth provider.
 // Note: Auth0 requires namespacing custom JWT claims
 //
 // Some providers, such as with Auth0, will set roles an authorization
@@ -55,7 +55,11 @@
 // The function `getCurrentUser` should return the user information
 // together with a collection of roles to check for role assignment:
 
-import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
+import {
+  AuthenticationError,
+  ForbiddenError,
+  parseJWT,
+} from '@redwoodjs/graphql-server'
 
 /**
  * Use requireAuth in your services to check that a user is logged in,
@@ -70,7 +74,7 @@ import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
  *   return await db.user.findUnique({ where: { decoded.email } })
  * }
  *
- * @example - User info is conatined in the decoded token and roles extracted
+ * @example - User info is contained in the decoded token and roles extracted
  *
  * export const getCurrentUser = async (decoded, { _token, _type }) => {
  *   return { decoded, roles: parseJWT({ decoded }).roles }

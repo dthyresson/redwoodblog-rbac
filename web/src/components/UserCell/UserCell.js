@@ -1,8 +1,12 @@
 import User from 'src/components/User'
 
+export const beforeQuery = ({ id }) => {
+  return { variables: { id } }
+}
+
 export const QUERY = gql`
-  query UserQuery {
-    user {
+  query UserQuery($id: String!) {
+    user(id: $id) {
       id
       email
       user_metadata {
