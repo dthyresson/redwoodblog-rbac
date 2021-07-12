@@ -9,15 +9,16 @@ const DELETE_POST_ROLES = ['admin', 'publisher']
 export const posts = () => {
   logger.trace('Fetching posts...')
 
-  logger.debug({ isAuthenticated: isAuthenticated() }, 'Logged in?')
-  logger.debug({ isAdmin: hasRole({ role: 'admin' }) }, 'Admin?')
+  logger.debug({ isAuthenticated: isAuthenticated() }, '>>>>>>> Logged in?')
+  logger.debug({ isAdmin: hasRole({ roles: 'admin' }) }, '>>>>>>> Admin?')
+  logger.debug({ isAdmin: hasRole({ roles: ['admin'] }) }, '>>>>>>> Admin []?')
   logger.debug(
-    { isPublisher: hasRole({ role: ['publisher'] }) },
-    'Is publisher'
+    { isPublisher: hasRole({ roles: ['publisher'] }) },
+    '>>>>>>> Is publisher'
   )
   logger.debug(
-    { canEdit: hasRole({ role: ['publisher', 'admin'] }) },
-    'Can edit'
+    { canEdit: hasRole({ roles: ['publisher', 'admin'] }) },
+    '>>>>>>> Can edit'
   )
 
   return db.post.findMany({ orderBy: { title: 'asc' } })

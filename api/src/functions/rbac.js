@@ -3,7 +3,7 @@ import { AuthenticationError, ForbiddenError } from '@redwoodjs/api'
 
 export const handler = async (event, context) => {
   try {
-    requireAuth({ role: 'admin' })
+    requireAuth({ roles: 'admin' })
 
     return {
       statusCode: 200,

@@ -1,5 +1,5 @@
 import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
-import { logger } from 'src/lib/logger'
+
 /**
  * getCurrentUser returns the user information together with
  * an optional collection of roles used by requireAuth() to check
@@ -12,17 +12,12 @@ import { logger } from 'src/lib/logger'
  *
  * @see https://github.com/redwoodjs/redwood/tree/main/packages/auth for examples
  */
-export const getCurrentUser = async (decoded) => {
-  logger.trace('In getCurrentUser')
-
-  const user = context.currentUser || {
-    ...decoded,
-    roles: parseJWT({ decoded }).roles,
-  }
-
-  logger.debug({ user }, 'Current user info')
-
-  return user
+export const getCurrentUser = async (
+  decoded,
+  { _token, _type },
+  { _event, _context }
+) => {
+  return { ...decoded, roles: parseJWT({ decoded }).roles }
 }
 
 /**
@@ -37,27 +32,27 @@ export const isAuthenticated = () => {
 /**
  * Checks if the currentUser is authenticated (and assigned one of the given roles)
  *
- * @param {string= | string[]=} role - A single role or list of roles to check if the user belongs to
+ * @param {string= | string[]=} roles - A single role or list of roles to check if the user belongs to
  *
  * @returns {boolean} - Returns true if the currentUser is authenticated (and assigned one of the given roles)
  */
-export const hasRole = ({ role }) => {
+export const hasRole = ({ roles }) => {
   if (!isAuthenticated()) {
     return false
   }
 
   if (
-    typeof role !== 'undefined' &&
-    typeof role === 'string' &&
-    context.currentUser.roles?.includes(role)
+    typeof roles !== 'undefined' &&
+    typeof roles === 'string' &&
+    context.currentUser.roles?.includes(roles)
   ) {
     return true
   }
 
   if (
-    typeof role !== 'undefined' &&
-    Array.isArray(role) &&
-    context.currentUser.roles?.some((r) => role.includes(r))
+    typeof roles !== 'undefined' &&
+    Array.isArray(roles) &&
+    context.currentUser.roles?.some((r) => roles.includes(r))
   ) {
     return true
   }
@@ -70,7 +65,7 @@ export const hasRole = ({ role }) => {
  * whether or not they are assigned a role, and optionally raise an
  * error if they're not.
  *
- * @param {string= | string[]=} role - A single role or list of roles to check if the user belongs to
+ * @param {string= | string[]=} roles - A single role or list of roles to check if the user belongs to
  *
  * @returns - If the currentUser is authenticated (and assigned one of the given roles)
  *
@@ -79,12 +74,12 @@ export const hasRole = ({ role }) => {
  *
  * @see https://github.com/redwoodjs/redwood/tree/main/packages/auth for examples
  */
-export const requireAuth = ({ role } = {}) => {
+export const requireAuth = ({ roles } = {}) => {
   if (!isAuthenticated) {
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
-  if (!hasRole({ role })) {
+  if (!hasRole({ roles })) {
     throw new ForbiddenError("You don't have access to do that.")
   }
 }
