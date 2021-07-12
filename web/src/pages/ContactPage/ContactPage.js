@@ -1,4 +1,5 @@
 import { useAuth } from '@redwoodjs/auth'
+import { Toaster } from '@redwoodjs/web/toast'
 
 import {
   Form,
@@ -9,7 +10,8 @@ import {
   Label,
   FormError,
 } from '@redwoodjs/forms'
-import { Flash, useMutation, useFlash } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/toast'
 import { useForm } from 'react-hook-form'
 
 const CREATE_CONTACT = gql`
@@ -22,14 +24,11 @@ const CREATE_CONTACT = gql`
 
 const ContactPage = () => {
   const { isAuthenticated } = useAuth()
-  const { addMessage } = useFlash()
   const formMethods = useForm()
 
   const [create, { loading, error }] = useMutation(CREATE_CONTACT, {
     onCompleted: () => {
-      addMessage('Thank you for your submission!', {
-        classes: 'rw-flash-success',
-      })
+      toast.success('Thank you for your submission!')
 
       formMethods.reset()
     },
@@ -41,7 +40,7 @@ const ContactPage = () => {
 
   return (
     <>
-      <Flash timeout={1000} />
+      <Toaster />
       <div className="max-w-7xl mx-auto">
         <h1 className="text-2xl font-semibold text-gray-900 border-b-2 border-gray-100">
           Contact

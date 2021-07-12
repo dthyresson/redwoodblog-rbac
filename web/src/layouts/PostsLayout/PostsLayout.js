@@ -1,5 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
-import { Flash } from '@redwoodjs/web'
+import { Toaster } from '@redwoodjs/web/toast'
 import { useAuth } from '@redwoodjs/auth'
 
 const PostsLayout = (props) => {
@@ -7,7 +7,7 @@ const PostsLayout = (props) => {
 
   return (
     <>
-      <Flash timeout={1000} />
+      <Toaster />
 
       <div className="rw-scaffold">
         <header className="rw-header">

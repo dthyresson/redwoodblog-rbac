@@ -1,5 +1,5 @@
 import { db } from 'src/lib/db'
-import { requireAuth } from 'src/lib/auth'
+import { requireAuth, isAuthenticated, hasRole } from 'src/lib/auth'
 import { logger } from 'src/lib/logger'
 
 const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
@@ -8,17 +8,25 @@ const DELETE_POST_ROLES = ['admin', 'publisher']
 
 export const posts = () => {
   logger.trace('Fetching posts...')
+
+  logger.debug({ isAuthenticated: isAuthenticated() }, 'Logged in?')
+  logger.debug({ isAdmin: hasRole({ role: 'admin' }) }, 'Admin?')
+  logger.debug(
+    { isPublisher: hasRole({ role: ['publisher'] }) },
+    'Is publisher'
+  )
+  logger.debug(
+    { canEdit: hasRole({ role: ['publisher', 'admin'] }) },
+    'Can edit'
+  )
+
   return db.post.findMany({ orderBy: { title: 'asc' } })
 }
 
 export const post = async ({ id }) => {
-  const post = await db.post.findUnique({
+  return await db.post.findUnique({
     where: { id },
   })
-
-  logger.debug({ payload: post }, `Fetching post ${post.title}`)
-
-  return post
 }
 
 export const createPost = ({ input }) => {

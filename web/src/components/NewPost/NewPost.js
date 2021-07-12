@@ -1,4 +1,6 @@
-import { useMutation, useFlash } from '@redwoodjs/web'
+import { useMutation } from '@redwoodjs/web'
+import { toast } from '@redwoodjs/web/toast'
+
 import { navigate, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
 
@@ -17,11 +19,10 @@ const CREATE_POST_MUTATION = gql`
 const NewPost = () => {
   const { hasRole } = useAuth()
 
-  const { addMessage } = useFlash()
   const [createPost, { loading, error }] = useMutation(CREATE_POST_MUTATION, {
     onCompleted: () => {
       navigate(routes.posts())
-      addMessage('Post created.', { classes: 'rw-flash-success' })
+      toast.success('Post created.')
     },
     // This refetches the query on the list page. Read more about other ways to
     // update the cache over here:
