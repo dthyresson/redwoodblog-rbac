@@ -1,12 +1,15 @@
 import { Link, routes } from '@redwoodjs/router'
 import moment from 'moment'
 import { useAuth } from '@redwoodjs/auth'
+import { MetaTags } from '@redwoodjs/web'
 
 const BlogPost = ({ post }) => {
   const { hasRole } = useAuth()
 
   return (
     <div className="relative py-16 bg-white overflow-hidden">
+      <MetaTags title={post.title} />
+
       <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
         <div className="relative h-full text-lg max-w-prose mx-auto">
           <svg

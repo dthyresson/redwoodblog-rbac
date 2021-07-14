@@ -1,11 +1,14 @@
 import { useAuth } from '@redwoodjs/auth'
 import UsersCell from 'src/components/UsersCell'
+import { MetaTags } from '@redwoodjs/web'
 
 const UsersPage = () => {
   const { isAuthenticated, hasRole } = useAuth()
 
   return (
     <>
+      <MetaTags title="Users" />
+
       {isAuthenticated && hasRole('admin') && (
         <div>
           <div className="max-w-7xl mx-auto mb-8">
