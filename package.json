@@ -3,9 +3,7 @@
   "workspaces": {
     "packages": [
       "api",
-      "web",
-      "redwood/*",
-      "node_modules/_redwood-linked-packages/*"
+      "web"
     ]
   },
   "devDependencies": {
