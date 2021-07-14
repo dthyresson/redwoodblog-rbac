@@ -1,12 +1,14 @@
 import { Link, routes } from '@redwoodjs/router'
 import { Toaster } from '@redwoodjs/web/toast'
 import { useAuth } from '@redwoodjs/auth'
+import { MetaTags } from '@redwoodjs/web'
 
 const PostsLayout = (props) => {
   const { hasRole } = useAuth()
 
   return (
     <>
+      <MetaTags title="Manage Posts" />
       <Toaster />
 
       <div className="rw-scaffold">

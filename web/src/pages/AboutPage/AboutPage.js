@@ -1,10 +1,12 @@
 import { useAuth } from '@redwoodjs/auth'
+import { MetaTags } from '@redwoodjs/web'
 
 const AboutPage = () => {
   const { logIn, signUp, isAuthenticated } = useAuth()
 
   return (
     <>
+      <MetaTags title="About RBAC Blog" />
       {!isAuthenticated && (
         <div className="bg-white">
           <div className="max-w-screen-xl mx-auto text-center py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
