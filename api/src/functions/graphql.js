@@ -13,7 +13,7 @@ import { logger } from 'src/lib/logger'
 export const handler = createGraphQLHandler({
   loggerConfig: {
     logger,
-    options: { tracing: true },
+    options: { tracing: true, operationName: true },
   },
   getCurrentUser,
   schema: makeMergedSchema({
