@@ -19,3 +19,4 @@
   open = false
 [experimental]
   esbuild = false
+  useEnvelop = true

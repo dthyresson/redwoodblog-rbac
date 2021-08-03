@@ -1,9 +1,11 @@
 export const schema = gql`
+  directive @requireAuth(roles: [String]) on FIELD_DEFINITION
+
   type Contact {
     id: Int!
     createdAt: DateTime!
     name: String!
-    email: String!
+    email: String! @requireAuth(roles: ["publisher"])
     message: String!
     userId: String
   }

@@ -32,32 +32,30 @@ export const isAuthenticated = () => {
 /**
  * Checks if the currentUser is authenticated (and assigned one of the given roles)
  *
- * @param {string= | string[]=} roles - A single role or list of roles to check if the user belongs to
+ * @param {string | string[]} roles - A single role or list of roles to check if the user belongs to
  *
- * @returns {boolean} - Returns true if the currentUser is authenticated (and assigned one of the given roles)
+ * @returns {boolean} - Returns true if the currentUser is logged in and assigned one of the given roles,
+ * or when no roles are provided to check against. Otherwise returns false.
  */
 export const hasRole = ({ roles }) => {
   if (!isAuthenticated()) {
     return false
   }
 
-  if (
-    typeof roles !== 'undefined' &&
-    typeof roles === 'string' &&
-    context.currentUser.roles?.includes(roles)
-  ) {
-    return true
+  if (roles) {
+    if (Array.isArray(roles)) {
+      return context.currentUser.roles?.some((r) => roles.includes(r))
+    }
+
+    if (typeof roles === 'string') {
+      return context.currentUser.roles?.includes(roles)
+    }
+
+    // roles not found
+    return false
   }
 
-  if (
-    typeof roles !== 'undefined' &&
-    Array.isArray(roles) &&
-    context.currentUser.roles?.some((r) => roles.includes(r))
-  ) {
-    return true
-  }
-
-  return false
+  return true
 }
 
 /**
@@ -75,7 +73,7 @@ export const hasRole = ({ roles }) => {
  * @see https://github.com/redwoodjs/redwood/tree/main/packages/auth for examples
  */
 export const requireAuth = ({ roles } = {}) => {
-  if (!isAuthenticated) {
+  if (!isAuthenticated()) {
     throw new AuthenticationError("You don't have permission to do that.")
   }
 
