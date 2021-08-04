@@ -1,4 +1,4 @@
-import { useGenericAuth } from '@envelop/generic-auth'
+import { useSecureServices } from 'src/lib/plugins/secureServices'
 
 import {
   createGraphQLHandler,
@@ -11,7 +11,11 @@ import services from 'src/services/**/*.{js,ts}'
 import { getCurrentUser } from 'src/lib/auth'
 import { db } from 'src/lib/db'
 import { logger } from 'src/lib/logger'
-import { requireAuth } from 'src/lib/auth'
+import { requireAuth } from 'src/graphql/directives/requireAuth.directive'
+import { requireSubscription } from 'src/graphql/directives/requireSubscription.directive'
+import { skipAuth } from 'src/graphql/directives/skipAuth.directive'
+
+import { getRoles } from 'src/lib/plugins/utils'
 
 export const handler = createGraphQLHandler({
   loggerConfig: {
@@ -19,6 +23,7 @@ export const handler = createGraphQLHandler({
     options: { tracing: true, operationName: true, query: true },
   },
   getCurrentUser,
+  // directives,
   schema: makeMergedSchema({
     schemas,
     services: makeServices({ services }),
@@ -26,16 +31,24 @@ export const handler = createGraphQLHandler({
   db,
   extraPlugins: [
     // eslint-disable-next-line -- Envelop plugin thinks it is a React hook.
-    useGenericAuth({
-      resolveUserFn: (context) => {
-        return context.currentUser
+    useSecureServices({
+      validateUser: (_resolverInfo, authDirectiveNode) => {
+        requireAuth({ roles: getRoles(authDirectiveNode) })
       },
+    }),
+    // eslint-disable-next-line -- Envelop plugin thinks it is a React hook.
+    useSecureServices({
       validateUser: () => {
-        requireAuth({ roles: undefined })
+        requireSubscription()
       },
-      authDirectiveName: 'requireAuth',
-      contextFieldName: 'resolvedUser',
-      mode: 'protect-auth-directive',
+      authDirectiveName: 'requireSubscription',
+    }),
+    // eslint-disable-next-line -- Envelop plugin thinks it is a React hook.
+    useSecureServices({
+      validateUser: () => {
+        skipAuth()
+      },
+      authDirectiveName: 'skipAuth',
     }),
   ],
 })

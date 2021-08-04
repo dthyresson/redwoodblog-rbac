@@ -12,8 +12,9 @@ export const schema = gql`
   }
 
   type Query {
-    posts: [Post!]!
-    post(id: Int!): Post! @requireAuth(roles: ["publisher"])
+    posts: [Post!]! @requireSubscription
+    post(id: Int!): Post! @requireAuth(roles: ["editor"])
+    #@requireAuth(roles: ["publisher"])
   }
 
   input CreatePostInput {
@@ -27,8 +28,8 @@ export const schema = gql`
   }
 
   type Mutation {
-    createPost(input: CreatePostInput!): Post!
-    updatePost(id: Int!, input: UpdatePostInput!): Post!
-    deletePost(id: Int!): Post!
+    createPost(input: CreatePostInput!): Post! @requireAuth
+    updatePost(id: Int!, input: UpdatePostInput!): Post! @requireAuth
+    deletePost(id: Int!): Post! @requireAuth
   }
 `
