@@ -14,7 +14,7 @@ export type ValidateUserFn = (
   directiveNode?: DirectiveNode
 ) => void | Promise<void>
 
-export type SecureServicesPluginOptions = {
+export type AuthDirectivePluginOptions = {
   validateUser?: ValidateUserFn
   /**
    * Overrides the default directive name
@@ -29,8 +29,8 @@ export function defaultValidateFn(): void {
   }
 }
 
-export const useSecureServices = (
-  options: SecureServicesPluginOptions
+export const useAuthDirective = (
+  options: AuthDirectivePluginOptions
 ): Plugin<{
   validateUser: ValidateUserFn
 }> => {

@@ -12,7 +12,7 @@ export const schema = gql`
   }
 
   type Query {
-    posts: [Post!]! @requireSubscription
+    posts: [Post!]!
     post(id: Int!): Post! @requireAuth(roles: ["editor"])
     #@requireAuth(roles: ["publisher"])
   }

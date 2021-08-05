@@ -1,4 +1,4 @@
-import { useSecureServices } from 'src/lib/plugins/secureServices'
+import { useAuthDirective } from 'src/lib/plugins/authDirective'
 
 import {
   createGraphQLHandler,
@@ -31,20 +31,20 @@ export const handler = createGraphQLHandler({
   db,
   extraPlugins: [
     // eslint-disable-next-line -- Envelop plugin thinks it is a React hook.
-    useSecureServices({
+    useAuthDirective({
       validateUser: (_resolverInfo, authDirectiveNode) => {
         requireAuth({ roles: getRoles(authDirectiveNode) })
       },
     }),
     // eslint-disable-next-line -- Envelop plugin thinks it is a React hook.
-    useSecureServices({
+    useAuthDirective({
       validateUser: () => {
         requireSubscription()
       },
       authDirectiveName: 'requireSubscription',
     }),
     // eslint-disable-next-line -- Envelop plugin thinks it is a React hook.
-    useSecureServices({
+    useAuthDirective({
       validateUser: () => {
         skipAuth()
       },
