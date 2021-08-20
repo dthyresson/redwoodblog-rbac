@@ -15,7 +15,7 @@ isBrowser && netlifyIdentity.init()
 
 const App = () => (
   <FatalErrorBoundary page={FatalErrorPage}>
-    <RedwoodProvider>
+    <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
       <AuthProvider client={netlifyIdentity} type="netlify">
         <RedwoodApolloProvider>
           <Routes />
