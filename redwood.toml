@@ -8,6 +8,7 @@
 # By default, a Redwood app's apiProxyPath is the same as Netlify's.
 
 [web]
+  title = "Redwood Blog with RBAC"
   port = 8910
   apiProxyPath = "/.netlify/functions"
   includeEnvironmentVariables = ['SITE_NAME', 'GOTRUE_JWT_EXP']
