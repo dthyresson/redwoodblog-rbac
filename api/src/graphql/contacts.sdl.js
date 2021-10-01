@@ -9,7 +9,7 @@ export const schema = gql`
   }
 
   type Query {
-    contacts: [Contact!]!
+    contacts: [Contact!]! @requireAuth(roles: "admin")
   }
 
   input CreateContactInput {
@@ -25,6 +25,6 @@ export const schema = gql`
   }
 
   type Mutation {
-    createContact(input: CreateContactInput!): Contact
+    createContact(input: CreateContactInput!): Contact @skipAuth
   }
 `

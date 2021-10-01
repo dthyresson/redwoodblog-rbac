@@ -1,6 +1,5 @@
 import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
-import moment from 'moment'
 
 const BlogPostSummary = ({ post, concise = false }) => {
   const { hasRole } = useAuth()
@@ -8,11 +7,7 @@ const BlogPostSummary = ({ post, concise = false }) => {
   return (
     <div className="bg-white">
       <p className="text-sm leading-5 text-gray-500">
-        <time
-          dateTime={moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm a')}
-        >
-          {moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm a')}
-        </time>
+        <time dateTime={post.formattedDate}>{post.formattedDate}</time>
       </p>
       <Link to={routes.blogPost({ id: post.id })} className="block">
         <h3 className="mt-2 text-xl leading-7 font-semibold text-gray-900">

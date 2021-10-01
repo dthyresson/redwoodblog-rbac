@@ -1,7 +1,7 @@
 import BlogPost from 'src/components/BlogPost'
 
 export const QUERY = gql`
-  query ($id: Int!) {
+  query FIND_BLOG_POST_BY_ID($id: Int!) {
     post(id: $id) {
       id
       title
@@ -9,6 +9,7 @@ export const QUERY = gql`
       createdAt
       publishedAt
       updatedAt
+      formattedDate
     }
   }
 `

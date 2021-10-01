@@ -12,6 +12,7 @@ This `redwoodblog` app is a modified-version of the RedwoodJS blog engine tutori
 * User Management via Netlify Identity API (view users)
 * Contact messages get associated with user, if logged in
 * Posts have an optional author and publisher set by currentUser
+* Authentication using Redwood Directives
 * Uses Netlify Identity [Trigger Serverless function calls](https://docs.netlify.com/functions/functions-and-identity/#trigger-serverless-functions-on-identity-events) to assign roles when signing up
 * Lists users (admin only) via Netlify Identity API
 
@@ -19,7 +20,7 @@ Note: This app does not store any User information in a database, but rather int
 
 You can access a demo at [https://redwoodblog-with-identity.netlify.app/](https://redwoodblog-with-identity.netlify.app/).
 
-***Important:*** This app currently uses [RedwoodJS v0.36.0](https://github.com/redwoodjs/redwood/releases/tag/v0.36.0). While we endeavor to keep this up-to-date with the latest version, there may be a short delay after a [new release](https://github.com/redwoodjs/redwood/releases).
+***Important:*** This app currently uses [RedwoodJS v0.37.0](https://github.com/redwoodjs/redwood/releases/tag/v0.37.0). While we endeavor to keep this up-to-date with the latest version, there may be a short delay after a [new release](https://github.com/redwoodjs/redwood/releases).
 
 ### Roles
 
@@ -71,17 +72,23 @@ Note: in future release, Private Routes will be able to accept a list of roles.
 
 On the `api` side:
 
-* In a `service` via `requireAuth()`
+* In a `sdl` declare your mutations with the `requireAuth` directive and permitted roles
+
+```ts
+  type Mutation {
+    createPost(input: CreatePostInput!): Post!
+      @requireAuth(roles: ["admin", "author", "publisher"])
+    updatePost(id: Int!, input: UpdatePostInput!): Post!
+      @requireAuth(roles: ["admin", "editor", "publisher"])
+    deletePost(id: Int!): Post! @requireAuth(roles: ["admin", "publisher"])
+  }
+`
+```
+
+* In a `service` just mutate as normal:
 
 ```js
-import { requireAuth } from 'src/lib/auth'
-
-...
-
-const CREATE_POST_ROLES = ['admin', 'author', 'publisher']
-
 export const createPost = ({ input }) => {
-  requireAuth({ roles: CREATE_POST_ROLES })
 
   return db.post.create({
     data: {
@@ -92,32 +99,6 @@ export const createPost = ({ input }) => {
   })
 }
 
-```
-
-Note: This app has a modified `requireAuth()` that accepts multiple roles:
-
-```js
-export const requireAuth = ({ roles } = {}) => {
-  if (!context.currentUser) {
-    throw new AuthenticationError("You don't have permission to do that.")
-  }
-
-  if (
-    typeof roles !== 'undefined' &&
-    typeof roles === 'string' &&
-    !context.currentUser.roles?.includes(roles)
-  ) {
-    throw new ForbiddenError("You don't have access to do that.")
-  }
-
-  if (
-    typeof roles !== 'undefined' &&
-    Array.isArray(roles) &&
-    !context.currentUser.roles?.some((role) => roles.includes(role))
-  ) {
-    throw new ForbiddenError("You don't have access to do that.")
-  }
-}
 ```
 
 #### Posts
@@ -374,31 +355,3 @@ yarn redwood dev
 ```
 
 Your browser should open automatically to `http://localhost:8910` to see the web app. Lambda functions run on `http://localhost:8911` and are also proxied to `http://localhost:8910/api/functions/*`.
-
-### Updating Redwood
-
-Redwood comes with a helpful command to update itself and its dependencies. Why not try a new and improved version today?
-
-> :point_right: IMPORTANT: Skipping versions when upgrading is not recommended and will likely cause problems. Do read through all [Release Notes](https://github.com/redwoodjs/redwood/releases) between your current version and the latest version. Each minor release will likely require you to implement breaking change fixes and apply manual code modifications.
-
-```terminal
-yarn rw upgrade
-```
-
-## Development
-
-### Database
-
-We're using [Prisma2](https://github.com/prisma/prisma2), a modern DB toolkit to query, migrate and model your database.
-
-Prisma2 is [not ready for production](https://isprisma2ready.com) at the moment.
-
-To create a development database:
-
-```terminal
-yarn redwood db up
-```
-
-This will read the schema definition in `api/prisma/schema.prisma` and generate a sqlite database in `api/prisma/dev.db`
-
-If you've made changes to the schema run `yarn redwood db save` to generate a migration, and `yarn redwood db up` to apply the migration/ generate a new ORM client.

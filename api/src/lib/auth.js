@@ -17,7 +17,17 @@ export const getCurrentUser = async (
   { _token, _type },
   { _event, _context }
 ) => {
-  return { ...decoded, roles: parseJWT({ decoded }).roles }
+  if (!decoded) {
+    return null
+  }
+
+  const { roles } = parseJWT({ decoded })
+
+  if (roles) {
+    return { ...decoded, roles }
+  }
+
+  return { ...decoded }
 }
 
 /**

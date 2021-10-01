@@ -5,7 +5,7 @@ export const schema = gql`
   }
 
   type Query {
-    userMetadata: UserMetadata!
+    userMetadata: UserMetadata! @requireAuth
   }
 
   input UpdateUserMetadataInput {
@@ -15,5 +15,6 @@ export const schema = gql`
 
   type Mutation {
     updateUserMetadata(input: UpdateUserMetadataInput!): UserMetadata!
+      @requireAuth
   }
 `

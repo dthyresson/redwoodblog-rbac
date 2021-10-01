@@ -1,7 +1,7 @@
 import BlogPostSummary from 'src/components/BlogPostSummary'
 
 export const QUERY = gql`
-  query {
+  query BLOG_POSTS {
     posts {
       ...postFields
     }
@@ -12,6 +12,7 @@ export const QUERY = gql`
     title
     body
     createdAt
+    formattedDate
   }
 `
 

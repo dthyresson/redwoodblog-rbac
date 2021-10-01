@@ -1,5 +1,4 @@
 import { Link, routes } from '@redwoodjs/router'
-import moment from 'moment'
 import { useAuth } from '@redwoodjs/auth'
 import { MetaTags } from '@redwoodjs/web'
 
@@ -113,13 +112,7 @@ const BlogPost = ({ post }) => {
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6">
           <p className="text-base text-center leading-6 text-orange-700 font-semibold tracking-wide uppercase">
-            <time
-              dateTime={moment(post.createdAt).format(
-                'dddd, MMMM Do YYYY, h:mm a'
-              )}
-            >
-              {moment(post.createdAt).format('dddd, MMMM Do YYYY, h:mm a')}
-            </time>
+            <time dateTime={post.formattedDate}>{post.formattedDate}</time>
           </p>
           <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
             {post.title}
