@@ -9,7 +9,11 @@ import { logger } from 'src/lib/logger'
 export const handler = createGraphQLHandler({
   loggerConfig: {
     logger,
-    options: { tracing: true, operationName: true, query: true },
+    options: {
+      tracing: true,
+      operationName: true,
+      query: true,
+    },
   },
 
   getCurrentUser,

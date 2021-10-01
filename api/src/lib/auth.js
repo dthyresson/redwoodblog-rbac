@@ -1,5 +1,9 @@
-import { AuthenticationError, ForbiddenError, parseJWT } from '@redwoodjs/api'
-
+import {
+  AuthenticationError,
+  ForbiddenError,
+  parseJWT,
+} from '@redwoodjs/graphql-server'
+import { logger } from 'src/lib/logger'
 /**
  * getCurrentUser returns the user information together with
  * an optional collection of roles used by requireAuth() to check
@@ -18,6 +22,7 @@ export const getCurrentUser = async (
   { _event, _context }
 ) => {
   if (!decoded) {
+    logger.warn('Missing decoded user')
     return null
   }
 

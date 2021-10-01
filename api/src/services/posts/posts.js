@@ -8,6 +8,8 @@ export const posts = () => {
 }
 
 export const post = async ({ id }) => {
+  logger.trace('Fetching post...')
+
   return await db.post.findUnique({
     where: { id },
   })
