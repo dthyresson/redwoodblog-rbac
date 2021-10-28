@@ -46,5 +46,5 @@ model UserRole {
   userProfileId Int?
   userProfile   UserProfile? @relation(fields: [userProfileId], references: [id])
 
-  @@unique([name, userProfileId], name: "UserRole.name_userProfileId_unique")
+  @@unique([name, userProfileId], name: "UserRole_name_userProfileId_unique")
 }
