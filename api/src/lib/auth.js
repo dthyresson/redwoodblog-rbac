@@ -23,11 +23,7 @@ export const getCurrentUser = async (
     return null
   }
 
-  logger.debug({ query: decoded }, 'decoded')
-
   const { roles } = parseJWT({ decoded })
-
-  logger.debug({ query: roles }, 'roles')
 
   if (roles) {
     return { ...decoded, roles }
