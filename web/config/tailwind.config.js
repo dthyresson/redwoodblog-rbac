@@ -1,8 +1,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  mode: 'jit',
-  purge: ['src/**/*.{js,jsx,ts,tsx}'],
+  // mode: 'jit',
+  content: ['src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
@@ -11,9 +11,9 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [
-    require('@tailwindcss/ui')({
-      layout: 'sidebar',
-    }),
-  ],
+  // plugins: [
+  //   require('@tailwindcss/ui')({
+  //     layout: 'sidebar',
+  //   }),
+  //],
 }
