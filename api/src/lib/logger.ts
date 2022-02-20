@@ -16,7 +16,6 @@ import { createLogger } from '@redwoodjs/api/logger'
  */
 export const logger = createLogger({
   options: {
-    prettyPrint: true,
     level: 'trace',
     redact: ['data.posts[*].title', 'data.users[*].email', 'email'],
   },
