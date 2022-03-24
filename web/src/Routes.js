@@ -26,7 +26,7 @@ const Routes = () => {
           />
         </Private>
 
-        <Private unauthenticated="home" role="admin">
+        <Private unauthenticated="home" roles="admin">
           <Route
             path="/admin/users"
             page={UsersPage}
@@ -45,7 +45,7 @@ const Routes = () => {
 
           <Private
             unauthenticated="home"
-            role={['admin', 'author', 'publisher']}
+            roles={['admin', 'author', 'publisher']}
             prerender
             whileLoadingPage={<>Fetching...</>}
           >
@@ -54,7 +54,7 @@ const Routes = () => {
 
           <Private
             unauthenticated="home"
-            role={['admin', 'editor', 'publisher']}
+            roles={['admin', 'editor', 'publisher']}
             prerender
             whileLoadingPage={<>Fetching...</>}
           >
@@ -66,7 +66,7 @@ const Routes = () => {
           </Private>
           <Private
             unauthenticated="home"
-            role={['admin', 'author', 'editor', 'publisher']}
+            roles={['admin', 'author', 'editor', 'publisher']}
             prerender
             whileLoadingPage={<>Fetching...</>}
           >

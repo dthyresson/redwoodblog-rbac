@@ -13,6 +13,7 @@ export const handler = createGraphQLHandler({
       tracing: true,
       operationName: true,
       query: true,
+      data: true,
     },
   },
 
