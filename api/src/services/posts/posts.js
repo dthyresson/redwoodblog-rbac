@@ -16,6 +16,8 @@ export const post = async ({ id }) => {
 }
 
 export const createPost = ({ input }) => {
+  logger.trace('Creating post...')
+
   return db.post.create({
     data: {
       ...input,
@@ -26,6 +28,8 @@ export const createPost = ({ input }) => {
 }
 
 export const updatePost = ({ id, input }) => {
+  logger.trace('Updating post...')
+
   return db.post.update({
     data: {
       ...input,
@@ -38,6 +42,8 @@ export const updatePost = ({ id, input }) => {
 }
 
 export const deletePost = ({ id }) => {
+  logger.trace('Deleting post...')
+
   return db.post.delete({
     where: { id },
   })

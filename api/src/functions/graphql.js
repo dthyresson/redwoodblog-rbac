@@ -10,7 +10,7 @@ export const handler = createGraphQLHandler({
   loggerConfig: {
     logger,
     options: {
-      tracing: true,
+      data: true,
       operationName: true,
       query: true,
     },
