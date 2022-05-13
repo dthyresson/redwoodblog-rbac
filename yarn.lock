@@ -2531,7 +2531,7 @@
     split2 "4.1.0"
     yargs "16.2.0"
 
-"@redwoodjs/api@1.3.2", "@redwoodjs/api@^1.3.2":
+"@redwoodjs/api@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/api/-/api-1.3.2.tgz#7358e338ad89c45ca1ebf397c2cf2b3b44cee416"
   integrity sha512-IvQL87Csba67uKUKv+oX00+fregp6E5OwRDMP1+KeLBOvVplXJydT7rxlPaiIK5zuL48NoFALXK/v5QZMqWxPQ==
@@ -2549,7 +2549,7 @@
     title-case "3.0.3"
     uuid "8.3.2"
 
-"@redwoodjs/auth@1.3.2", "@redwoodjs/auth@^1.3.2":
+"@redwoodjs/auth@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/auth/-/auth-1.3.2.tgz#b2639445b72fe31cf85430722f1ff79ca8c4af8a"
   integrity sha512-AEVjfvC9AE8gw9J92CeWPPStZDVvBbB2gbkKTwO31dxr+rHsu/d5tOf6j18E+ZXwf73m3HGWTdbxyJS5N03xfA==
@@ -2594,7 +2594,7 @@
     terminal-link "2.1.1"
     yargs "16.2.0"
 
-"@redwoodjs/core@^1.3.2":
+"@redwoodjs/core@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/core/-/core-1.3.2.tgz#79f20f2718af610095823ee4982ad12f458866b4"
   integrity sha512-NsqeHZJNIPVcJIhdY/nxZCi3t2a0kfELB0QFtBE0SWsR36jucl843RFgptvp+2/a0ysIC/LHhiME2irupAN/Ag==
@@ -2676,7 +2676,7 @@
     eslint-plugin-react-hooks "4.3.0"
     prettier "2.6.2"
 
-"@redwoodjs/forms@^1.3.2":
+"@redwoodjs/forms@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/forms/-/forms-1.3.2.tgz#fcd39fd1e866626de7fe9ca59e5dae7c43293fa6"
   integrity sha512-Pv+zf7+0bhg640F2U++bwJbwn4K25PNylkmion6LKNgO7iphOxWgaZQy+SNWxE37aTYIbuuETRSiir05uBEPkQ==
@@ -2685,7 +2685,7 @@
     pascalcase "1.0.0"
     react-hook-form "7.30.0"
 
-"@redwoodjs/graphql-server@1.3.2", "@redwoodjs/graphql-server@^1.3.2":
+"@redwoodjs/graphql-server@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/graphql-server/-/graphql-server-1.3.2.tgz#30356387c672612e93ad7173a245f2ccb7fdb3f3"
   integrity sha512-x88agbLBLpUWQ0uUrjJ1JRJLEmzVslxqMwmjYqz6wNRtFCbGD9XmAaZrQ4ihFfBXVh1toD1FFJVeOJ7LHonjxw==
@@ -2761,7 +2761,7 @@
     cross-undici-fetch "0.1.27"
     mime-types "2.1.35"
 
-"@redwoodjs/router@1.3.2", "@redwoodjs/router@^1.3.2":
+"@redwoodjs/router@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/router/-/router-1.3.2.tgz#d20d08c622eb78b43c3467b19677c4d5dd624561"
   integrity sha512-MOlwV87+Iw/SuAXr+cnogA1q/m5WgcU395BzsojvPQsb3IAeNc5bPTnrfnLQLFRA7c7Bw0re/4W3Kk6fJQ+qKw==
@@ -2846,7 +2846,7 @@
     ts-toolbelt "9.6.0"
     whatwg-fetch "3.6.2"
 
-"@redwoodjs/web@1.3.2", "@redwoodjs/web@^1.3.2":
+"@redwoodjs/web@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@redwoodjs/web/-/web-1.3.2.tgz#504520630502852baa6fd9fb68a27b48a52218c0"
   integrity sha512-B+w14CNmYpb8kLtrwEdmZgxO7HRakQMWX6j5xtJYcFy9TXb8krP5nuk4zUG/iFziDP7TGGUKHtYWkd0q1QQGDA==
@@ -5537,7 +5537,7 @@ auto-bind@~4.0.0:
   resolved "https://registry.yarnpkg.com/auto-bind/-/auto-bind-4.0.0.tgz#e3589fc6c2da8f7ca43ba9f84fa52a744fc997fb"
   integrity sha512-Hdw8qdNiqdJ8LqT0iK0sVzkFbzg6fhnQqqfWhBDxcHZvU75+B+ayzTy8x+k5Ix0Y92XOhOUlx74ps+bA6BeYMQ==
 
-autoprefixer@^10.3.1:
+autoprefixer@10.3.1:
   version "10.3.1"
   resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-10.3.1.tgz#954214821d3aa06692406c6a0a9e9d401eafbed2"
   integrity sha512-L8AmtKzdiRyYg7BUXJTzigmhbQRCXFKz6SA1Lqo0+AR2FBbQ4aTAPFSDlOutnFkjhiz8my4agGXog1xlMjPJ6A==
@@ -13017,7 +13017,7 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.0.tgz#0fbdcf3e13fe4994781280524f8b96b0cdff9c61"
   integrity sha512-AO81vsIO1k1sM4Zrd6Hu7regmJN1NSiAja10gc4bX3F0wd+9rQmcuHQaHVQCYIEC8iFXnE+mavh23GOt7wBgug==
 
-netlify-identity-widget@^1.9.2:
+netlify-identity-widget@1.9.2:
   version "1.9.2"
   resolved "https://registry.yarnpkg.com/netlify-identity-widget/-/netlify-identity-widget-1.9.2.tgz#4339c9155fc4c2570ae3ddd61825d952b574b02e"
   integrity sha512-IbS1JHhs7BflCCvp3C9f6tmNSZqbyBhZ4Gs5+Qxt4IlPybTOVv0PqJ4TAsA7uxh1R+oXOAmk0OOMAkEaPYeCtA==
@@ -14035,6 +14035,15 @@ postcss-load-config@^3.1.0:
     lilconfig "^2.0.4"
     yaml "^1.10.2"
 
+postcss-loader@6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-6.1.1.tgz#58dd0a3accd9bc87cc52eff75244db578d11301a"
+  integrity sha512-lBmJMvRh1D40dqpWKr9Rpygwxn8M74U9uaCSeYGNKLGInbk9mXBt1ultHf2dH9Ghk6Ue4UXlXWwGMH9QdUJ5ug==
+  dependencies:
+    cosmiconfig "^7.0.0"
+    klona "^2.0.4"
+    semver "^7.3.5"
+
 postcss-loader@^4.2.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-4.3.0.tgz#2c4de9657cd4f07af5ab42bd60a673004da1b8cc"
@@ -14045,15 +14054,6 @@ postcss-loader@^4.2.0:
     loader-utils "^2.0.0"
     schema-utils "^3.0.0"
     semver "^7.3.4"
-
-postcss-loader@^6.1.1:
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-6.1.1.tgz#58dd0a3accd9bc87cc52eff75244db578d11301a"
-  integrity sha512-lBmJMvRh1D40dqpWKr9Rpygwxn8M74U9uaCSeYGNKLGInbk9mXBt1ultHf2dH9Ghk6Ue4UXlXWwGMH9QdUJ5ug==
-  dependencies:
-    cosmiconfig "^7.0.0"
-    klona "^2.0.4"
-    semver "^7.3.5"
 
 postcss-merge-longhand@^5.0.2:
   version "5.0.2"
@@ -14299,6 +14299,15 @@ postcss-value-parser@^4.0.2, postcss-value-parser@^4.1.0, postcss-value-parser@^
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
+postcss@8.4.12, postcss@^8.2.15, postcss@^8.3.5, postcss@^8.4.6, postcss@^8.4.7:
+  version "8.4.12"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.12.tgz#1e7de78733b28970fa4743f7da6f3763648b1905"
+  integrity sha512-lg6eITwYe9v6Hr5CncVbK70SoioNQIq81nsaG86ev5hAidQvmOeETBqs7jm43K2F5/Ley3ytDtriImV6TpNiSg==
+  dependencies:
+    nanoid "^3.3.1"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
 postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.36, postcss@^7.0.5, postcss@^7.0.6:
   version "7.0.36"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.36.tgz#056f8cffa939662a8f5905950c07d5285644dfcb"
@@ -14307,15 +14316,6 @@ postcss@^7.0.14, postcss@^7.0.26, postcss@^7.0.32, postcss@^7.0.36, postcss@^7.0
     chalk "^2.4.2"
     source-map "^0.6.1"
     supports-color "^6.1.0"
-
-postcss@^8.2.15, postcss@^8.3.5, postcss@^8.3.6, postcss@^8.4.6, postcss@^8.4.7:
-  version "8.4.12"
-  resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.12.tgz#1e7de78733b28970fa4743f7da6f3763648b1905"
-  integrity sha512-lg6eITwYe9v6Hr5CncVbK70SoioNQIq81nsaG86ev5hAidQvmOeETBqs7jm43K2F5/Ley3ytDtriImV6TpNiSg==
-  dependencies:
-    nanoid "^3.3.1"
-    picocolors "^1.0.0"
-    source-map-js "^1.0.2"
 
 prelude-ls@^1.2.1:
   version "1.2.1"
@@ -14490,7 +14490,7 @@ prompts@2.4.2, prompts@^2.0.1, prompts@^2.4.0:
     kleur "^3.0.3"
     sisteransi "^1.0.5"
 
-prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
+prop-types@15.8.1, prop-types@^15.0.0, prop-types@^15.6.0, prop-types@^15.6.2, prop-types@^15.7.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -14863,7 +14863,7 @@ react-textarea-autosize@^8.3.0:
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
 
-react-transition-group@^4.4.1:
+react-transition-group@4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.2.tgz#8b59a56f09ced7b55cbd53c36768b922890d5470"
   integrity sha512-/RNYfRAMlZwDSr6z4zNKV6xu53/e2BuaBbGhbyYIXTrmgu/bGHzmqOs7mJSJBHy9Ud+ApHx3QjrkKSp1pxvlFg==
@@ -16551,7 +16551,7 @@ systeminformation@5.11.14:
   resolved "https://registry.yarnpkg.com/systeminformation/-/systeminformation-5.11.14.tgz#21fcb6f05d33e17d69c236b9c1b3d9c53d1d2b3a"
   integrity sha512-m8CJx3fIhKohanB0ExTk5q53uI1J0g5B09p77kU+KxnxRVpADVqTAwCg1PFelqKsj4LHd+qmVnumb511Hg4xow==
 
-tailwindcss@^3.0.23:
+tailwindcss@3.0.23:
   version "3.0.23"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-3.0.23.tgz#c620521d53a289650872a66adfcb4129d2200d10"
   integrity sha512-+OZOV9ubyQ6oI2BXEhzw4HrqvgcARY38xv3zKcjnWtMIZstEsXdI9xftd1iB7+RbOnj2HOEzkA0OyB5BaSxPQA==
