@@ -6,7 +6,7 @@
     "defaults"
   ],
   "dependencies": {
-    "@headlessui/react": "^1.5.0",
+    "@headlessui/react": "1.6.1",
     "@redwoodjs/auth": "^1.3.2",
     "@redwoodjs/forms": "^1.3.2",
     "@redwoodjs/router": "^1.3.2",
