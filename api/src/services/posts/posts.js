@@ -8,7 +8,7 @@ export const posts = () => {
 }
 
 export const post = async ({ id }) => {
-  logger.trace('Fetching post...')
+  logger.trace({ postId: id }, 'Fetching post...')
 
   return await db.post.findUnique({
     where: { id },
@@ -28,7 +28,7 @@ export const createPost = ({ input }) => {
 }
 
 export const updatePost = ({ id, input }) => {
-  logger.trace('Updating post...')
+  logger.trace({ postId: input.id }, 'Updating post...')
 
   return db.post.update({
     data: {
@@ -42,7 +42,7 @@ export const updatePost = ({ id, input }) => {
 }
 
 export const deletePost = ({ id }) => {
-  logger.trace('Deleting post...')
+  logger.trace({ postId: id }, 'Deleting post...')
 
   return db.post.delete({
     where: { id },
