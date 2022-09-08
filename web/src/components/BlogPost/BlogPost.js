@@ -10,8 +10,7 @@ const BlogPost = ({ post }) => {
       <MetaTags title={post.title} />
 
       <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
-        <div className="relative h-full text-lg max-w-prose mx-auto">
-        </div>
+        <div className="relative h-full text-lg max-w-prose mx-auto"></div>
       </div>
       <div className="relative px-4 sm:px-6 lg:px-8">
         <div className="text-lg max-w-prose mx-auto mb-6">
@@ -21,6 +20,7 @@ const BlogPost = ({ post }) => {
           <h1 className="mt-2 mb-8 text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
             {post.title}
           </h1>
+          <h2>{post.views} in past 24 hrs</h2>
         </div>
         <div className="prose prose-lg text-gray-500 mx-auto">
           <p>{post.body}</p>

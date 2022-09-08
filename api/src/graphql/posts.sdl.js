@@ -10,6 +10,7 @@ export const schema = gql`
     title: String!
     body: String!
     formattedDate: String @publishedDateFormatter
+    views: Int
   }
 
   type Query {

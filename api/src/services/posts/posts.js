@@ -1,4 +1,5 @@
 import { db } from 'src/lib/db'
+import { blogPostViews } from 'src/services/analytics'
 import { logger } from 'src/lib/logger'
 
 export const posts = () => {
@@ -10,9 +11,13 @@ export const posts = () => {
 export const post = async ({ id }) => {
   logger.trace({ postId: id }, 'Fetching post...')
 
-  return await db.post.findUnique({
+  const views = await blogPostViews({ id })
+
+  const result = await db.post.findUnique({
     where: { id },
   })
+
+  return { ...result, views: views?.['count'] }
 }
 
 export const createPost = ({ input }) => {

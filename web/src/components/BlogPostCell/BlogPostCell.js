@@ -10,6 +10,7 @@ export const QUERY = gql`
       publishedAt
       updatedAt
       formattedDate
+      views
     }
   }
 `
