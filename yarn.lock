@@ -19943,16 +19943,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.1":
-  version: 17.0.1
-  resolution: "react-dom@npm:17.0.1"
+"react-dom@npm:17.0.2":
+  version: 17.0.2
+  resolution: "react-dom@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-    scheduler: ^0.20.1
+    scheduler: ^0.20.2
   peerDependencies:
-    react: 17.0.1
-  checksum: 3e68d9ec8866acdcb5758b2e9597f03444a341a7a4f864c67060a4ab73a25c2615a0a6d94fa1e3cefa5c8a90cc8b01fe8d6e1caeb31848d7bf79b434a4a79a7f
+    react: 17.0.2
+  checksum: 51abbcb72450fe527ebf978c3bc989ba266630faaa53f47a2fae5392369729e8de62b2e4683598cbe651ea7873cd34ec7d5127e2f50bf4bfe6bd0c3ad9bddcb0
   languageName: node
   linkType: hard
 
@@ -20100,13 +20100,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.1":
-  version: 17.0.1
-  resolution: "react@npm:17.0.1"
+"react@npm:17.0.2":
+  version: 17.0.2
+  resolution: "react@npm:17.0.2"
   dependencies:
     loose-envify: ^1.1.0
     object-assign: ^4.1.1
-  checksum: adaf04c179d1f3811ea7d221a0929643c2b0518e6e168cba554a4c3e2032c0c22a6a49e83f1b43f98bbf71d93fede73e69489082373bccf2142d13ae94fa3b20
+  checksum: 07ae8959acf1596f0550685102fd6097d461a54a4fd46a50f88a0cd7daaa97fdd6415de1dcb4bfe0da6aa43221a6746ce380410fa848acc60f8ac41f6649c148
   languageName: node
   linkType: hard
 
@@ -20963,7 +20963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.1":
+"scheduler@npm:^0.20.2":
   version: 0.20.2
   resolution: "scheduler@npm:0.20.2"
   dependencies:
@@ -23804,8 +23804,8 @@ __metadata:
     postcss: ^8.3.6
     postcss-loader: ^6.1.1
     prop-types: ^15.7.2
-    react: 17.0.1
-    react-dom: 17.0.1
+    react: 17.0.2
+    react-dom: 17.0.2
     react-transition-group: ^4.4.1
     tailwindcss: ^3.0.23
   languageName: unknown
