@@ -20,7 +20,7 @@ Note: This app does not store any User information in a database, but rather int
 
 You can access a demo at [https://redwoodblog-with-identity.netlify.app/](https://redwoodblog-with-identity.netlify.app/).
 
-***Important:*** This app currently uses [RedwoodJS v1.3.2](https://github.com/redwoodjs/redwood/releases/tag/v1.3.2). While we endeavor to keep this up-to-date with the latest version, there may be a short delay after a [new release](https://github.com/redwoodjs/redwood/releases).
+***Important:*** This app currently uses [RedwoodJS v4-canary](https://github.com/redwoodjs/redwood/releases/tag/v4.0.0). While we endeavor to keep this up-to-date with the latest version, there may be a short delay after a [new release](https://github.com/redwoodjs/redwood/releases).
 
 ### Roles
 

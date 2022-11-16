@@ -1,5 +1,5 @@
+import { useAuth } from 'src/auth'
 import { NavLink, routes } from '@redwoodjs/router'
-import { useAuth } from '@redwoodjs/auth'
 
 import logo from './redwood_logotype.png'
 

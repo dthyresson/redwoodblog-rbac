@@ -1,5 +1,6 @@
-import { requireAuth } from 'src/lib/auth'
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/api'
+
+import { requireAuth } from 'src/lib/auth'
 
 export const handler = async (event, context) => {
   try {

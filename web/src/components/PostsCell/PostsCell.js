@@ -1,5 +1,5 @@
+import { useAuth } from 'src/auth'
 import { Link, routes } from '@redwoodjs/router'
-import { useAuth } from '@redwoodjs/auth'
 
 import Posts from 'src/components/Posts'
 
