@@ -4,5 +4,5 @@ export const standard = () => {
     users: {
       id: 42,
     },
-  };
-};
+  }
+}

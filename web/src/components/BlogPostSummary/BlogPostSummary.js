@@ -1,5 +1,5 @@
-import { Link, routes } from '@redwoodjs/router'
 import { useAuth } from '@redwoodjs/auth'
+import { Link, routes } from '@redwoodjs/router'
 
 const BlogPostSummary = ({ post, concise = false }) => {
   const { hasRole } = useAuth()

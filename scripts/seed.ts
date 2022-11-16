@@ -1,4 +1,5 @@
 import { db } from '$api/src/lib/db'
+
 const dotenv = require('dotenv')
 
 dotenv.config()

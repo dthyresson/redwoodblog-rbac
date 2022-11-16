@@ -1,9 +1,8 @@
 import { Router, Route, Private, Set } from '@redwoodjs/router'
 
 import BlogLayout from 'src/layouts/BlogLayout'
-import SidebarLayout from 'src/layouts/SidebarLayout'
 import PostsLayout from 'src/layouts/PostsLayout'
-
+import SidebarLayout from 'src/layouts/SidebarLayout'
 import HomePage from 'src/pages/HomePage'
 
 const Routes = () => {

@@ -1,6 +1,6 @@
-import { useAuth } from '@redwoodjs/auth'
-import { Toaster } from '@redwoodjs/web/toast'
+import { useForm } from 'react-hook-form'
 
+import { useAuth } from '@redwoodjs/auth'
 import {
   Form,
   TextField,
@@ -11,8 +11,8 @@ import {
   FormError,
 } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
+import { Toaster } from '@redwoodjs/web/toast'
 import { toast } from '@redwoodjs/web/toast'
-import { useForm } from 'react-hook-form'
 
 const CREATE_CONTACT = gql`
   mutation CreateContactMutation($input: CreateContactInput!) {

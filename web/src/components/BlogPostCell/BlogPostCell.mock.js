@@ -4,5 +4,5 @@ export const standard = () => {
     blogPost: {
       id: 42,
     },
-  };
-};
+  }
+}

@@ -1,11 +1,9 @@
+import { useAuth } from '@redwoodjs/auth'
+import { navigate, routes } from '@redwoodjs/router'
 import { useMutation } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { navigate, routes } from '@redwoodjs/router'
-import { useAuth } from '@redwoodjs/auth'
-
 import PostForm from 'src/components/PostForm'
-
 import { QUERY } from 'src/components/PostsCell'
 
 const CREATE_POST_MUTATION = gql`
