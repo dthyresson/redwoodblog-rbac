@@ -19943,16 +19943,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:17.0.1":
-  version: 17.0.1
-  resolution: "react-dom@npm:17.0.1"
+"react-dom@npm:18.2.0":
+  version: 18.2.0
+  resolution: "react-dom@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-    scheduler: ^0.20.1
+    scheduler: ^0.23.0
   peerDependencies:
-    react: 17.0.1
-  checksum: 3e68d9ec8866acdcb5758b2e9597f03444a341a7a4f864c67060a4ab73a25c2615a0a6d94fa1e3cefa5c8a90cc8b01fe8d6e1caeb31848d7bf79b434a4a79a7f
+    react: ^18.2.0
+  checksum: 66dfc5f93e13d0674e78ef41f92ed21dfb80f9c4ac4ac25a4b51046d41d4d2186abc915b897f69d3d0ebbffe6184e7c5876f2af26bfa956f179225d921be713a
   languageName: node
   linkType: hard
 
@@ -20100,13 +20099,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:17.0.1":
-  version: 17.0.1
-  resolution: "react@npm:17.0.1"
+"react@npm:18.2.0":
+  version: 18.2.0
+  resolution: "react@npm:18.2.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: adaf04c179d1f3811ea7d221a0929643c2b0518e6e168cba554a4c3e2032c0c22a6a49e83f1b43f98bbf71d93fede73e69489082373bccf2142d13ae94fa3b20
+  checksum: b562d9b569b0cb315e44b48099f7712283d93df36b19a39a67c254c6686479d3980b7f013dc931f4a5a3ae7645eae6386b4aa5eea933baa54ecd0f9acb0902b8
   languageName: node
   linkType: hard
 
@@ -20963,13 +20961,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.1":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.0":
+  version: 0.23.0
+  resolution: "scheduler@npm:0.23.0"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b0982e4b0f34f4ffa4f2f486161c0fd9ce9b88680b045dccbf250eb1aa4fd27413570645455187a83535e2370f5c667a251045547765408492bd883cbe95fcdb
+  checksum: b777f7ca0115e6d93e126ac490dbd82642d14983b3079f58f35519d992fa46260be7d6e6cede433a92db70306310c6f5f06e144f0e40c484199e09c1f7be53dd
   languageName: node
   linkType: hard
 
@@ -23804,8 +23801,8 @@ __metadata:
     postcss: ^8.3.6
     postcss-loader: ^6.1.1
     prop-types: ^15.7.2
-    react: 17.0.1
-    react-dom: 17.0.1
+    react: 18.2.0
+    react-dom: 18.2.0
     react-transition-group: ^4.4.1
     tailwindcss: ^3.0.23
   languageName: unknown
