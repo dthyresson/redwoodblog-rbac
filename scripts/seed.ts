@@ -1,4 +1,4 @@
-import { db } from '$api/src/lib/db'
+import { db } from 'api/src/lib/db'
 
 const dotenv = require('dotenv')
 

@@ -12,9 +12,9 @@ const Routes = () => {
     <Router useAuth={useAuth}>
       <Set wrap={[SidebarLayout]}>
         <Set wrap={BlogLayout}>
-          <Route path="/" page={HomePage} name="home" prerender />
+          <Route path="/" page={HomePage} name="home" />
         </Set>
-        <Route path="/about" page={AboutPage} name="about" prerender />
+        <Route path="/about" page={AboutPage} name="about" />
         <Route path="/contact" page={ContactPage} name="contact" />
 
         <Private unauthenticated="home">
@@ -23,7 +23,6 @@ const Routes = () => {
             page={SettingsPage}
             name="settings"
             whileLoadingPage={<>Your settings await ....</>}
-            prerender
           />
         </Private>
 
@@ -33,7 +32,6 @@ const Routes = () => {
             page={UsersPage}
             name="users"
             whileLoadingPage={<>Fetching...</>}
-            prerender
           />
         </Private>
 
@@ -47,7 +45,6 @@ const Routes = () => {
           <Private
             unauthenticated="home"
             role={['admin', 'author', 'publisher']}
-            prerender
             whileLoadingPage={<>Fetching...</>}
           >
             <Route path="/admin/posts/new" page={NewPostPage} name="newPost" />
@@ -56,7 +53,6 @@ const Routes = () => {
           <Private
             unauthenticated="home"
             role={['admin', 'editor', 'publisher']}
-            prerender
             whileLoadingPage={<>Fetching...</>}
           >
             <Route
@@ -68,7 +64,6 @@ const Routes = () => {
           <Private
             unauthenticated="home"
             role={['admin', 'author', 'editor', 'publisher']}
-            prerender
             whileLoadingPage={<>Fetching...</>}
           >
             <Route path="/admin/posts/{id:Int}" page={PostPage} name="post" />
