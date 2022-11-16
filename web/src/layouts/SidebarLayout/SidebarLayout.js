@@ -2,9 +2,10 @@ import { useState } from 'react'
 
 import { Transition } from '@headlessui/react'
 
-import { useAuth } from '@redwoodjs/auth'
 import { NavLink, Link, routes } from '@redwoodjs/router'
 import { MetaTags } from '@redwoodjs/web'
+
+import { useAuth } from 'src/auth'
 
 import logo from './redwood_logotype.png'
 

@@ -1,3 +1,4 @@
+import { netlifyAuthDecoder as authDecoder } from '@redwoodjs/auth-providers-api'
 import { createGraphQLHandler } from '@redwoodjs/graphql-server'
 
 import directives from 'src/directives/**/*.{js,ts}'
@@ -8,6 +9,7 @@ import { getCurrentUser } from 'src/lib/auth'
 import { logger } from 'src/lib/logger'
 
 export const handler = createGraphQLHandler({
+  authDecoder,
   loggerConfig: {
     logger,
     options: {

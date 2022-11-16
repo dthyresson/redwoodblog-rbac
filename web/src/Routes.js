@@ -5,9 +5,11 @@ import PostsLayout from 'src/layouts/PostsLayout'
 import SidebarLayout from 'src/layouts/SidebarLayout'
 import HomePage from 'src/pages/HomePage'
 
+import { useAuth } from './auth'
+
 const Routes = () => {
   return (
-    <Router>
+    <Router useAuth={useAuth}>
       <Set wrap={[SidebarLayout]}>
         <Set wrap={BlogLayout}>
           <Route path="/" page={HomePage} name="home" prerender />
