@@ -7,6 +7,6 @@
     "@redwoodjs/auth-providers-api": "^0.0.1",
     "@redwoodjs/graphql-server": "4.0.0-canary.230",
     "date-fns": "2.28.0",
-    "got": "11.8.3"
+    "got": "12.6.0"
   }
 }
