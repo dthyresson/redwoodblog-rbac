@@ -6,7 +6,7 @@
     "defaults"
   ],
   "dependencies": {
-    "@headlessui/react": "1.6.1",
+    "@headlessui/react": "1.7.19",
     "@redwoodjs/auth": "4.0.0-canary.230",
     "@redwoodjs/auth-providers-web": "^0.0.1",
     "@redwoodjs/forms": "4.0.0-canary.230",
