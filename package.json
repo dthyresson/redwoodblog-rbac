@@ -18,8 +18,8 @@
     "yarn": ">=1.15"
   },
   "resolutions": {
-    "react-dom": "17.0.1",
-    "react": "17.0.1"
+    "react-dom": "18.3.1",
+    "react": "18.3.1"
   },
   "prisma": {
     "seed": "yarn rw exec seed"
